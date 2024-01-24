@@ -4,11 +4,12 @@ Feature: Register
     Given Launch browser
     Given Navigate to url "http://automationexercise.com"
     When Verify that home page is visible successfully
+    @wip
   Scenario: Test Case:1 Register User
-    Given Click on "Signup / Login" button
+    Given Click on "Signup / Login" button on header
     When Verify "New User Signup!" is visible
     And Enter name and email address
-    And Click "Signup" button
+    And Click Signup button
     Then Verify that "ENTER ACCOUNT INFORMATION" is visible
     And Fill details: Title, Name, Email, Password, Date of birth
     And Select checkbox "Sign up for our newsletter!"

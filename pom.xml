@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.10.0</version>
+            <version>4.16.0</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -28,6 +28,21 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>7.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.24.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.26</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
         </dependency>
     </dependencies>
     <build>
