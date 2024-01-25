@@ -13,7 +13,7 @@ import java.time.Duration;
 public class Hooks {
     @Before
     public void setUp(){
-        Driver.get().manage().window().maximize();
+        //Driver.get().manage().window().maximize();
         Driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
     }
     @After

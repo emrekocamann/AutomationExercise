@@ -6,8 +6,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class Signup_LoginPage extends BasePage {
-    Faker faker = new Faker();
+public class LoginPage extends BasePage {
+
+    public static final String newUserName;
+    public static  final String newUserEmail;
+    static {
+        Faker faker = new Faker();
+        newUserName = faker.name().firstName();
+        newUserEmail = faker.internet().emailAddress();
+    }
+
 
     @FindBy(xpath = "//h2[text()='New User Signup!']")
     private WebElement newUserSignupText;
@@ -21,16 +29,8 @@ public class Signup_LoginPage extends BasePage {
     private WebElement signUpButton;
 
     public void fillOutSingUpForm(){
-        nameInputBox.sendKeys(createFakeUserName());
-        emailInputBoxOnSignUpForm.sendKeys(createFakeEmail());
-    }
-
-    private String createFakeUserName(){
-
-        return faker.name().firstName();
-    }
-    private String createFakeEmail(){
-        return faker.internet().emailAddress();
+        nameInputBox.sendKeys(newUserName);
+        emailInputBoxOnSignUpForm.sendKeys(newUserEmail);
     }
 
 }
