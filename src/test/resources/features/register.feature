@@ -1,5 +1,5 @@
 
-Feature: Register
+Feature: Register new user and delete user
   Background:
     Given Launch browser
     Given Navigate to url "http://automationexercise.com"
@@ -19,5 +19,5 @@ Feature: Register
     Then Verify that ACCOUNT CREATED! is visible
     Then Click Continue button
     Then Verify that Logged in as username is visible
-    Then Click Delete Account button
+    Then Click on "Delete Account" button on header
     Then Verify that "ACCOUNT DELETED!" is visible and click Continue button

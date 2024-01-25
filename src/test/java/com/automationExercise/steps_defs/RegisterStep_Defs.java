@@ -93,10 +93,6 @@ public class RegisterStep_Defs {
     public void verify_that_logged_in_as_username_is_visible() {
         Assert.assertTrue(loginPage.verifyThatLoggedInAsUsernameIsVisible());
     }
-    @Then("Click Delete Account button")
-    public void click_delete_account_button() {
-            loginPage.navigateToMenu("Delete Account");
-    }
     @Then("Verify that {string} is visible and click Continue button")
     public void verify_that_is_visible_and_click_button(String expectedText) {
         String actualText = signUpPage.getAccountDeletedText().getText();
