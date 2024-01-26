@@ -17,20 +17,32 @@ public class LoginPage extends BasePage {
     }
 
 
-    @FindBy(xpath = "//h2[text()='New User Signup!']")
+    @FindBy(css = "div.signup-form>h2")
     private WebElement newUserSignupText;
-
+    @FindBy(css = "div.login-form>h2")
+    private WebElement loginToYourAccountText;
+    @FindBy(css = "[data-qa='login-email']")
+    private WebElement emailInputBoxOnLoginForm;
+    @FindBy(css = "[data-qa='login-password']")
+    private WebElement passwordInputBoxOnLoginForm;
     @FindBy(css = "[data-qa='signup-name']")
     private WebElement nameInputBox;
     @FindBy(css = "[data-qa='signup-email']")
     private WebElement emailInputBoxOnSignUpForm;
 
+    @FindBy(css = "[data-qa='login-button']")
+    private WebElement loginButton;
     @FindBy(css = "[data-qa='signup-button']")
     private WebElement signUpButton;
 
     public void fillOutSingUpForm(){
         nameInputBox.sendKeys(newUserName);
         emailInputBoxOnSignUpForm.sendKeys(newUserEmail);
+        System.out.println(newUserEmail);
+    }
+    public void fillOutLoginForm(String email,String password){
+        emailInputBoxOnLoginForm.sendKeys(email);
+        passwordInputBoxOnLoginForm.sendKeys(password);
     }
 
 }

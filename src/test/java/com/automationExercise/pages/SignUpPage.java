@@ -69,7 +69,9 @@ public class SignUpPage extends BasePage{
             nameInputBox.sendKeys(LoginPage.newUserName);
             emailInputBox.sendKeys(LoginPage.newUserEmail);
         }
-        passwordInputBox.sendKeys(createPasswordWithFaker());
+        String password = createPasswordWithFaker();
+        passwordInputBox.sendKeys(password);
+        System.out.println(password);
         BrowserUtils.scrollToElement(passwordInputBox);
         Select select = new Select(dayDropDownMenu);
         select.selectByIndex(15);

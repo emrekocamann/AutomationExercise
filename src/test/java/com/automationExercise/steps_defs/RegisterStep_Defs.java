@@ -41,7 +41,7 @@ public class RegisterStep_Defs {
     public void click_on_button_on_header(String menuName) {
         homePage.navigateToMenu(menuName);
     }
-    @When("Verify {string} is visible")
+    @When("Verify {string} is visible on the signup form")
     public void verify_is_visible(String expectedText) {
         String actualText = loginPage.getNewUserSignupText().getText();
         Assert.assertEquals(expectedText,actualText);
@@ -52,7 +52,7 @@ public class RegisterStep_Defs {
         loginPage.fillOutSingUpForm();
     }
     @When("Click Signup button")
-    public void click_button() {
+    public void click_signup_button() {
         loginPage.getSignUpButton().click();
     }
     @Then("Verify that ENTER ACCOUNT INFORMATION is visible")

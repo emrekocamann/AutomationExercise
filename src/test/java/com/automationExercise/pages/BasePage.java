@@ -31,4 +31,10 @@ public abstract class BasePage {
                           +LoginPage.newUserName+"']"))
                  .isDisplayed();
     }
+    public boolean verifyThatLoggedInAsUsernameIsVisible(String userName){
+        return Driver.get().findElement(
+                        By.xpath("//div[@class='col-sm-8']//li//*[.=' Logged in as "
+                                +userName+"']"))
+                .isDisplayed();
+    }
 }
