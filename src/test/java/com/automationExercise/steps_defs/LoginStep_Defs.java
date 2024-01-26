@@ -36,7 +36,8 @@ public class LoginStep_Defs {
         Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
     }
 
-
-
-
+    @Then("Verify that user is navigated to login page")
+    public void verifyThatUserIsNavigatedToLoginPage() {
+        Assert.assertTrue(loginPage.verifyThatUserIsNavigatedToLoginPage());
+    }
 }

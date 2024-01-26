@@ -1,5 +1,6 @@
 package com.automationExercise.pages;
 
+import com.automationExercise.utilities.Driver;
 import com.github.javafaker.Faker;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
@@ -44,6 +45,11 @@ public class LoginPage extends BasePage {
     public void fillOutLoginForm(String email,String password){
         emailInputBoxOnLoginForm.sendKeys(email);
         passwordInputBoxOnLoginForm.sendKeys(password);
+    }
+    public boolean verifyThatUserIsNavigatedToLoginPage() {
+        String expectedUrl = "https://automationexercise.com/login";
+        String actualUrl = Driver.get().getCurrentUrl();
+        return expectedUrl.equals(actualUrl) && loginToYourAccountText.isDisplayed() && newUserSignupText.isDisplayed();
     }
 
 }
