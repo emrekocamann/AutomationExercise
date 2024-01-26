@@ -13,7 +13,7 @@ public class LoginPage extends BasePage {
     static {
         Faker faker = new Faker();
         newUserName = faker.name().firstName();
-        newUserEmail = faker.internet().emailAddress();
+        newUserEmail = newUserName.toLowerCase()+faker.internet().emailAddress();
     }
 
 
@@ -34,11 +34,12 @@ public class LoginPage extends BasePage {
     private WebElement loginButton;
     @FindBy(css = "[data-qa='signup-button']")
     private WebElement signUpButton;
+    @FindBy(css = "div.login-form p")
+    private WebElement loginErrorMessage;
 
     public void fillOutSingUpForm(){
         nameInputBox.sendKeys(newUserName);
         emailInputBoxOnSignUpForm.sendKeys(newUserEmail);
-        System.out.println(newUserEmail);
     }
     public void fillOutLoginForm(String email,String password){
         emailInputBoxOnLoginForm.sendKeys(email);

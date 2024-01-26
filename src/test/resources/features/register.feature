@@ -4,7 +4,7 @@ Feature: Register new user and delete user
     Given Launch browser
     Given Navigate to url "http://automationexercise.com"
     When Verify that home page is visible successfully
-@wip1
+
   Scenario: Test Case:1 Register User
     Given Click on "Signup / Login" button on header
     When Verify "New User Signup!" is visible on the signup form
@@ -20,4 +20,4 @@ Feature: Register new user and delete user
     Then Click Continue button
     Then Verify that Logged in as username is visible
     Then Click on "Delete Account" button on header
-  #  Then Verify that "ACCOUNT DELETED!" is visible and click Continue button
+    Then Verify that "ACCOUNT DELETED!" is visible and click Continue button

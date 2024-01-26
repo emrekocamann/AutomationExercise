@@ -25,10 +25,17 @@ public class LoginStep_Defs {
     public void verifyThatLoggedInAsIsVisible(String userName) {
         loginPage.verifyThatLoggedInAsUsernameIsVisible(userName);
     }
-    @Then("Verify that {string} is visible")
-    public void verify_that_is_visible(String string) {
-
+    @Given("Enter incorrect {string} address and {string}")
+    public void enter_incorrect_address_and(String email, String password) {
+            loginPage.fillOutLoginForm(email,password);
     }
+    @Then("Verify error {string} is visible")
+    public void verify_error_is_visible(String expectedErrorMessage) {
+        String actualErrorMessage = loginPage.getLoginErrorMessage().getText();
+        Assert.assertTrue(loginPage.getLoginErrorMessage().isDisplayed());
+        Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
+    }
+
 
 
 

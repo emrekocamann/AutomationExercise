@@ -71,7 +71,7 @@ public class SignUpPage extends BasePage{
         }
         String password = createPasswordWithFaker();
         passwordInputBox.sendKeys(password);
-        System.out.println(password);
+
         BrowserUtils.scrollToElement(passwordInputBox);
         Select select = new Select(dayDropDownMenu);
         select.selectByIndex(15);
@@ -98,7 +98,7 @@ public class SignUpPage extends BasePage{
     }
 
     private String createPasswordWithFaker() {
-        return faker.internet().password(5,10,true,true);
+        return faker.internet().password(6,12,true,false,true);
     }
     private boolean verifyNameAndEmail(){
         String nameValue = nameInputBox.getAttribute("value");
