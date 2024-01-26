@@ -9,13 +9,7 @@ import org.openqa.selenium.support.FindBy;
 @Getter
 public class LoginPage extends BasePage {
 
-    public static final String newUserName;
-    public static  final String newUserEmail;
-    static {
-        Faker faker = new Faker();
-        newUserName = faker.name().firstName();
-        newUserEmail = newUserName.toLowerCase()+faker.internet().emailAddress();
-    }
+
 
 
     @FindBy(css = "div.signup-form>h2")
@@ -37,7 +31,8 @@ public class LoginPage extends BasePage {
     private WebElement signUpButton;
     @FindBy(css = "div.login-form p")
     private WebElement loginErrorMessage;
-
+    @FindBy(css = "div.signup-form p")
+    private WebElement signupErrorMessage;
 
     public void fillOutSingUpForm(){
         nameInputBox.sendKeys(newUserName);

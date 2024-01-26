@@ -34,7 +34,7 @@ public class Driver {
 
                     options.addArguments("--start-maximized");      //full screen
 
-                    options.addExtensions(new File("extensions/UBlock_Origin.crx")); //add blocker
+                    options.addExtensions(new File("src/test/resources/extensions/UBlock_Origin.crx")); //add blocker
                     driver= new ChromeDriver(options);
                 }
                 case "chrome-headless"->driver= new ChromeDriver(new ChromeOptions().addArguments("--headless=new"));

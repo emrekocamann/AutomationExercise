@@ -108,8 +108,8 @@ public class RegisterStep_Defs {
 
     @Then("Verify error {string} is visible on signup form")
     public void verifyErrorEmailAddressAlreadyExistIsVisibleOnSignupForm(String expectedErrorMessage) {
-        String actualErrorMessage = signUpPage.getSignupErrorMessage().getText();
-        Assert.assertTrue(signUpPage.getSignupErrorMessage().isDisplayed());
+        String actualErrorMessage = loginPage.getSignupErrorMessage().getText();
+        Assert.assertTrue(loginPage.getSignupErrorMessage().isDisplayed());
         Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
     }
 }

@@ -5,18 +5,24 @@ import com.automationExercise.utilities.Driver;
 import com.github.javafaker.Faker;
 import lombok.Getter;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 @Getter
 public abstract class BasePage {
-    Faker faker = new Faker();
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
     }
 
+    Faker faker = new Faker();
+    public static final String newUserName;
+    public static  final String newUserEmail;
+    static {
+        Faker faker = new Faker();
+        newUserName = faker.name().firstName();
+        newUserEmail = newUserName.toLowerCase()+faker.internet().emailAddress();
+    }
     @FindBy(xpath = "//div[@class='col-sm-8']//li//*[contains(.,'Home')]")
     protected WebElement homeButton;
 

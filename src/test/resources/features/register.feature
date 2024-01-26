@@ -22,7 +22,7 @@ Feature: Register
     And Click on "Delete Account" button on header
     Then Verify that "ACCOUNT DELETED!" is visible and click Continue button
 
-  @wip
+
   Scenario Outline: Negative Register Test -- Test Case 5: Register User with existing email
     Given Enter name and already "<registered email>" address
     When Click Signup button

@@ -23,7 +23,7 @@ public class LoginStep_Defs {
     }
     @When("Verify that Logged in as {string} is visible")
     public void verifyThatLoggedInAsIsVisible(String userName) {
-        loginPage.verifyThatLoggedInAsUsernameIsVisible(userName);
+        Assert.assertTrue(loginPage.verifyThatLoggedInAsUsernameIsVisible(userName));
     }
     @Given("Enter incorrect {string} address and {string}")
     public void enter_incorrect_address_and(String email, String password) {
