@@ -38,9 +38,14 @@ public class LoginPage extends BasePage {
     @FindBy(css = "div.login-form p")
     private WebElement loginErrorMessage;
 
+
     public void fillOutSingUpForm(){
         nameInputBox.sendKeys(newUserName);
         emailInputBoxOnSignUpForm.sendKeys(newUserEmail);
+    }
+    public void fillOutSingUpForm(String email){
+        nameInputBox.sendKeys(newUserName);
+        emailInputBoxOnSignUpForm.sendKeys(email);
     }
     public void fillOutLoginForm(String email,String password){
         emailInputBoxOnLoginForm.sendKeys(email);

@@ -26,7 +26,7 @@ Feature: Positive and Negative Login Test
   Scenario Outline:Test Case 3: Login User with incorrect email and password
     Given Enter incorrect "<email>" address and "<password>"
     When Click Login button on Login page
-    Then Verify error 'Your email or password is incorrect!' is visible
+    Then Verify error 'Your email or password is incorrect!' is visible on login form
     Examples:
       | email                      | password |
       | erin.green@hotmail.com     | 126062    |

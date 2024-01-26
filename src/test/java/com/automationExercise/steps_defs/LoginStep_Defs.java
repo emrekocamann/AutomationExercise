@@ -29,7 +29,7 @@ public class LoginStep_Defs {
     public void enter_incorrect_address_and(String email, String password) {
             loginPage.fillOutLoginForm(email,password);
     }
-    @Then("Verify error {string} is visible")
+    @Then("Verify error {string} is visible on login form")
     public void verify_error_is_visible(String expectedErrorMessage) {
         String actualErrorMessage = loginPage.getLoginErrorMessage().getText();
         Assert.assertTrue(loginPage.getLoginErrorMessage().isDisplayed());

@@ -3,6 +3,7 @@ package com.automationExercise.pages;
 import com.automationExercise.utilities.BrowserUtils;
 import com.automationExercise.utilities.Driver;
 import lombok.Getter;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,6 +63,8 @@ public class SignUpPage extends BasePage{
     private WebElement continueButtonOnAccountCreatedPage;
     @FindBy(xpath = "//*[text()='Account Deleted!']")
     private WebElement accountDeletedText;
+    @FindBy(css = "div.signup-form p")
+    private WebElement signupErrorMessage;
 
     public void fillAccountInfoForm(){
         titleMrRadioButton.click();
@@ -108,6 +111,11 @@ public class SignUpPage extends BasePage{
 
     public void selectCheckBoxWithText(String checkboxText){
         Driver.get().findElement(By.xpath("//*[text()='"+checkboxText+"']")).click();
+    }
+    public void verifyErrorIsVisible(String expectedErrorMessage) {
+        String actualErrorMessage = loginPage.getLoginErrorMessage().getText();
+        Assert.assertTrue(loginPage.getLoginErrorMessage().isDisplayed());
+        Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
     }
 }
 

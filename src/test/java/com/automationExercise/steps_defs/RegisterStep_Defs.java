@@ -101,4 +101,15 @@ public class RegisterStep_Defs {
     }
 
 
+    @Given("Enter name and already {string} address")
+    public void enterNameAndAlreadyAddress(String email) {
+        loginPage.fillOutSingUpForm(email);
+    }
+
+    @Then("Verify error {string} is visible on signup form")
+    public void verifyErrorEmailAddressAlreadyExistIsVisibleOnSignupForm(String expectedErrorMessage) {
+        String actualErrorMessage = signUpPage.getSignupErrorMessage().getText();
+        Assert.assertTrue(signUpPage.getSignupErrorMessage().isDisplayed());
+        Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
+    }
 }
