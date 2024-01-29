@@ -1,5 +1,5 @@
 Feature: Test Cases Page
-  @wip
+
   Scenario: Test Case 7: Verify Test Cases Page
     Given Launch browser
     And Navigate to url "http://automationexercise.com"

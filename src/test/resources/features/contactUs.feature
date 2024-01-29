@@ -1,5 +1,5 @@
 Feature: Contact Us
-  @wip
+
   Scenario: Test Case 6: Contact Us Form
     Given Launch browser
     And Navigate to url "http://automationexercise.com"
