@@ -25,6 +25,16 @@ public abstract class BasePage {
     }
     @FindBy(xpath = "//div[@class='col-sm-8']//li//*[contains(.,'Home')]")
     protected WebElement homeButton;
+    @FindBy(xpath = "//h2[text()='Subscription']")
+    protected WebElement subscriptionTextOnFooter;
+    @FindBy(id = "susbscribe_email")
+    protected WebElement subscribe_emailInputBox;
+    @FindBy(id = "subscribe")
+    protected WebElement subscribeArrowButton;
+    @FindBy(css = "div.footer-bottom")
+    protected WebElement footerBottom;
+    @FindBy(xpath = "//div[text()='You have been successfully subscribed!']")
+    protected WebElement subscribedSuccessMessage;
 
     public void navigateToMenu(String menuName){
         String locator= "//div[@class='col-sm-8']//a[contains(.,'"+menuName+"')]";
@@ -42,5 +52,9 @@ public abstract class BasePage {
                         By.xpath("//div[@class='col-sm-8']//li//*[.=' Logged in as "
                                 +userName+"']"))
                 .isDisplayed();
+    }
+    public void subscribe(){
+        subscribe_emailInputBox.sendKeys(faker.internet().emailAddress());
+        subscribeArrowButton.click();
     }
 }
