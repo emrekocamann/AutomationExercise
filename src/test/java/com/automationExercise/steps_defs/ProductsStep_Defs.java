@@ -39,4 +39,16 @@ public class ProductsStep_Defs {
         softAssertions.assertThat(productsPage.getProductBrand().isDisplayed()).isTrue();
         softAssertions.assertAll();
     }
+    @Then("Enter {string} in search input and click search button")
+    public void enter_in_search_input_and_click_search_button(String productName) {
+        productsPage.searchProducts(productName);
+    }
+    @Then("Verify SEARCHED PRODUCTS is visible")
+    public void verify_searched_products_is_visible() {
+        Assert.assertTrue(productsPage.getSearchedProductsText().isDisplayed());
+    }
+    @Then("Verify all the products related to search are visible")
+    public void verify_all_the_products_related_to_search_are_visible() {
+      Assert.assertTrue(productsPage.verifyAllTheProductsRelatedToSearchAreVisible());
+    }
 }
