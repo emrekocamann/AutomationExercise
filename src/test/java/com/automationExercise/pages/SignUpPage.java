@@ -3,7 +3,6 @@ package com.automationExercise.pages;
 import com.automationExercise.utilities.BrowserUtils;
 import com.automationExercise.utilities.Driver;
 import lombok.Getter;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

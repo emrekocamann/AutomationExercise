@@ -1,8 +1,10 @@
 package com.automationExercise.steps_defs;
 
 import com.automationExercise.pages.ProductsPage;
+import com.automationExercise.pages.ShoppingCartPage;
 import com.automationExercise.utilities.Driver;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 
@@ -50,5 +52,19 @@ public class ProductsStep_Defs {
     @Then("Verify all the products related to search are visible")
     public void verify_all_the_products_related_to_search_are_visible() {
       Assert.assertTrue(productsPage.verifyAllTheProductsRelatedToSearchAreVisible());
+    }
+    @When("Hover over product {int} and click Add to cart")
+    public void hover_over_product_and_click_add_to_cart(int productNumber) {
+        productsPage.hoverAndClickAddToCartWithRowNumber(productNumber);
+    }
+    @When("Click {string} button on PopUp")
+    public void click_button_on_pop_up(String text) {
+        productsPage.clickViewCartOrContinueShopping(text);
+    }
+
+    @Then("Verify both products are added to Cart")
+    public void verify_both_products_are_added_to_cart() {
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+        Assert.assertTrue(shoppingCartPage.verifyProductsAreAddedToCart());
     }
 }

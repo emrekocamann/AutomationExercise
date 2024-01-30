@@ -18,6 +18,8 @@ public abstract class BasePage {
     Faker faker = new Faker();
     public static final String newUserName;
     public static  final String newUserEmail;
+    protected int currentProductNum;
+
     static {
         Faker faker = new Faker();
         newUserName = faker.name().firstName();

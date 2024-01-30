@@ -9,7 +9,7 @@ Feature: Subscribed
     And Enter email address in input and click arrow button
     Then Verify success message "You have been successfully subscribed!" is visible on footer
 
-  @wip
+
   Scenario: Test Case 11: Verify Subscription in Cart page
     Given Launch browser
     And Navigate to url "http://automationexercise.com"
