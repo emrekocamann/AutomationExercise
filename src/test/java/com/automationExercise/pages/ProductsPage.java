@@ -68,8 +68,7 @@ public class ProductsPage extends BasePage{
     private List<WebElement> productPrices;
     public void hoverAndClickAddToCartWithRowNumber(int rowNumber){
         int index= rowNumber-1;
-        WebElement product= productsList.get(index);
-        BrowserUtils.hover(product);
+        BrowserUtils.hover(productsList.get(index));
         BrowserUtils.clickWithJS( addToCartButtonsOnOverlay.get(index));
         ShoppingCartPage.idOfProductsAddedToCart.add("product-"+rowNumber);
         BrowserUtils.waitFor(1);
@@ -78,21 +77,6 @@ public class ProductsPage extends BasePage{
         String price = productPrices.get(index).getText();
 
         addProductToProductsList("product-"+rowNumber,name,price);
-
-//        Map<String,String> info= new HashMap<>();
-//        info.put("id","product-"+rowNumber);
-//        info.put("name",name);
-//        info.put("price",price);
-//        int quantity=1;
-//        info.put("quantity",String.valueOf(quantity));
-//        for (Map<String, String> map : products) {
-//            if (map.get("id").contains(info.get("id"))) {
-//                quantity = Integer.parseInt(map.get("quantity")) + 1;
-//                map.put("quantity", String.valueOf(quantity));
-//                return;
-//            }
-//        }
-//        ProductsPage.products.add(info);
     }
     public void addProductToProductsList(String id,String name,String price){
         Map<String,String> info= new HashMap<>();

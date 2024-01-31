@@ -1,7 +1,9 @@
 package com.automationExercise.steps_defs;
 
+import com.automationExercise.pages.BasePage;
 import com.automationExercise.pages.ProductsPage;
 import com.automationExercise.pages.ShoppingCartPage;
+import com.automationExercise.utilities.BrowserUtils;
 import com.automationExercise.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -28,7 +30,7 @@ public class ProductsStep_Defs {
     @Then("User is landed to product detail page")
     public void user_is_landed_to_product_detail_page() {
         String actualUrl = Driver.get().getCurrentUrl();
-        String expectedEndPoint= "product_details/"+productsPage.getCurrentProductNum();
+        String expectedEndPoint= "product_details/"+ BasePage.currentProductNum;
         Assert.assertTrue(actualUrl.contains(expectedEndPoint));
     }
     @Then("Verify that detail is visible: product name, category, price, availability, condition, brand")
@@ -59,6 +61,7 @@ public class ProductsStep_Defs {
     }
     @When("Click {string} button on PopUp")
     public void click_button_on_pop_up(String text) {
+        BrowserUtils.waitForVisibility(productsPage.getAddedPopUp());
         productsPage.clickViewCartOrContinueShopping(text);
     }
 

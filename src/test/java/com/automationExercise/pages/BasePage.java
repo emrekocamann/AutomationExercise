@@ -18,7 +18,7 @@ public abstract class BasePage {
     Faker faker = new Faker();
     public static final String newUserName;
     public static  final String newUserEmail;
-    protected int currentProductNum;
+    public static int currentProductNum;
 
     static {
         Faker faker = new Faker();
@@ -37,6 +37,8 @@ public abstract class BasePage {
     protected WebElement footerBottom;
     @FindBy(xpath = "//div[text()='You have been successfully subscribed!']")
     protected WebElement subscribedSuccessMessage;
+    @FindBy(css = "div.modal-content")
+    protected WebElement addedPopUp;
 
     public void navigateToMenu(String menuName){
         String locator= "//div[@class='col-sm-8']//a[contains(.,'"+menuName+"')]";

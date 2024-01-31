@@ -5,7 +5,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +27,11 @@ public class BrowserUtils {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    public static WebElement waitForVisibility(WebElement element) {
+
+        WebDriverWait wait = new WebDriverWait(Driver.get(), Duration.ofSeconds(7));
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
     public static void scrollDown(int scrollSize) {
         ((JavascriptExecutor) Driver.get()).executeScript("window.scrollBy(0,"+scrollSize+")");
