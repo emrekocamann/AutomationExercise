@@ -4,6 +4,10 @@ import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BrowserUtils {
     public static void verifyElementDisplayed(WebElement element) {
@@ -30,5 +34,16 @@ public class BrowserUtils {
     public static void clickWithJS(WebElement element) {
         ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].click();", element);
+    }
+    public static void hover(WebElement element) {
+        Actions actions = new Actions(Driver.get());
+        actions.moveToElement(element).perform();
+    }
+    public static List<String> getElementsText(List<WebElement> elements){
+        List<String> list = new ArrayList<>();
+        for (WebElement element : elements) {
+            list.add(element.getText());
+        }
+        return list;
     }
 }

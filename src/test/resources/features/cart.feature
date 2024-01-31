@@ -5,9 +5,13 @@ Feature: Add to Cart
       And Navigate to url "http://automationexercise.com"
       And Verify that home page is visible successfully
       And Click on "Products" button on header
-      When Hover over product 6 and click Add to cart
+      When Hover over product 1 and click Add to cart
       And  Click "Continue Shopping" button on PopUp
-      And Hover over product 7 and click Add to cart
+      And Hover over product 2 and click Add to cart
+      And  Click "Continue Shopping" button on PopUp
+      When Hover over product 1 and click Add to cart
+      And  Click "Continue Shopping" button on PopUp
+      When Hover over product 1 and click Add to cart
       And Click "View Cart" button on PopUp
       Then Verify both products are added to Cart
       Then Verify their prices, quantity and total price
