@@ -1,6 +1,7 @@
 package com.automationExercise.steps_defs;
 
 import com.automationExercise.pages.BasePage;
+import com.automationExercise.pages.ProductDetailsPage;
 import com.automationExercise.pages.ProductsPage;
 import com.automationExercise.pages.ShoppingCartPage;
 import com.automationExercise.utilities.BrowserUtils;
@@ -12,6 +13,7 @@ import org.junit.Assert;
 
 public class ProductsStep_Defs {
     ProductsPage productsPage = new ProductsPage();
+    ProductDetailsPage detailsPage = new ProductDetailsPage();
     SoftAssertions softAssertions = new SoftAssertions();
     @Then("Verify user is navigated to ALL PRODUCTS page successfully")
     public void verify_user_is_navigated_to_all_products_page_successfully() {
@@ -35,12 +37,12 @@ public class ProductsStep_Defs {
     }
     @Then("Verify that detail is visible: product name, category, price, availability, condition, brand")
     public void verify_that_detail_is_visible_product_name_category_price_availability_condition_brand() {
-        softAssertions.assertThat(productsPage.getProductName().isDisplayed()).isTrue();
-        softAssertions.assertThat(productsPage.getProductCategory().isDisplayed()).isTrue();
-        softAssertions.assertThat(productsPage.getProductPrice().isDisplayed()).isTrue();
-        softAssertions.assertThat(productsPage.getProductAvailability().isDisplayed()).isTrue();
-        softAssertions.assertThat(productsPage.getProductCondition().isDisplayed()).isTrue();
-        softAssertions.assertThat(productsPage.getProductBrand().isDisplayed()).isTrue();
+        softAssertions.assertThat(detailsPage.getProductName().isDisplayed()).isTrue();
+        softAssertions.assertThat(detailsPage.getProductCategory().isDisplayed()).isTrue();
+        softAssertions.assertThat(detailsPage.getProductPrice().isDisplayed()).isTrue();
+        softAssertions.assertThat(detailsPage.getProductAvailability().isDisplayed()).isTrue();
+        softAssertions.assertThat(detailsPage.getProductCondition().isDisplayed()).isTrue();
+        softAssertions.assertThat(detailsPage.getProductBrand().isDisplayed()).isTrue();
         softAssertions.assertAll();
     }
     @Then("Enter {string} in search input and click search button")

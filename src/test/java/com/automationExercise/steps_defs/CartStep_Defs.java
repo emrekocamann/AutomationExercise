@@ -1,10 +1,8 @@
 package com.automationExercise.steps_defs;
 
-import com.automationExercise.pages.BasePage;
 import com.automationExercise.pages.HomePage;
 import com.automationExercise.pages.ProductDetailsPage;
 import com.automationExercise.pages.ShoppingCartPage;
-import com.automationExercise.utilities.BrowserUtils;
 import com.automationExercise.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -47,7 +45,7 @@ public class CartStep_Defs {
     }
     @When("Click Add to cart button on product details page")
     public void click_add_to_cart_button_on_product_details_page() {
-        String price = detailsPage.getPrice().getText();
+        String price = detailsPage.getProductPrice().getText();
         String currentUrl = Driver.get().getCurrentUrl();
         String id = currentUrl.substring(currentUrl.lastIndexOf("/")+1);
 

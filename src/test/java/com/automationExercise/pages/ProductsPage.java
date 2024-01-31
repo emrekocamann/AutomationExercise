@@ -25,18 +25,7 @@ public class ProductsPage extends BasePage{
     private List<WebElement> viewProductsButtons;
     @FindBy(xpath = "//div[@class='product-overlay']//a[text()='Add to cart']")
     private List<WebElement> addToCartButtonsOnOverlay;
-    @FindBy(css = "div.product-information h2")
-    private WebElement productName;
-    @FindBy(xpath = "//div[@class='product-information']/p[contains(text(),'Category')]")
-    private WebElement productCategory;
-    @FindBy(css = "div.product-information>span>span")
-    private WebElement productPrice;
-    @FindBy(xpath = "//div[@class='product-information']/p[contains(.,'Availability')]")
-    private WebElement productAvailability;
-    @FindBy(xpath = "//div[@class='product-information']/p[contains(.,'Condition')]")
-    private  WebElement productCondition;
-    @FindBy(xpath = "//div[@class='product-information']/p[contains(.,'Brand')]")
-    private  WebElement productBrand;
+
 
     @FindBy(id = "search_product")
     private WebElement searchBox;
