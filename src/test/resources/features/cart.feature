@@ -11,7 +11,7 @@ Feature: Add to Cart
       And Click "View Cart" button on PopUp
       Then Verify both products are added to Cart
       Then Verify their prices, quantity and total price
-    @wip
+
     Scenario: Test Case 13: Verify Product quantity in Cart
       Given Launch browser
       And Navigate to url "http://automationexercise.com"
