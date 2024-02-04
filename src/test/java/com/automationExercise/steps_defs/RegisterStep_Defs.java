@@ -112,4 +112,11 @@ public class RegisterStep_Defs {
         Assert.assertTrue(loginPage.getSignupErrorMessage().isDisplayed());
         Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
     }
+    @When("Fill all details in Signup and create account")
+    public void fill_all_details_in_signup_and_create_account() {
+        loginPage.fillOutSingUpForm();
+        loginPage.getSignUpButton().click();
+        signUpPage.fillFullForm();
+
+    }
 }

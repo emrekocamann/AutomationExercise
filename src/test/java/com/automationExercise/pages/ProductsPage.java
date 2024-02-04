@@ -1,19 +1,14 @@
 package com.automationExercise.pages;
 
 import com.automationExercise.utilities.BrowserUtils;
-import com.automationExercise.utilities.Driver;
 import lombok.Getter;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Getter
-public class ProductsPage extends BasePage{
+public class ProductsPage extends BasePage implements AddToCart {
     private String searchedProduct;
     @FindBy(xpath = "//h2[text()='All Products']")
     private WebElement allProductsText;
@@ -50,7 +45,7 @@ public class ProductsPage extends BasePage{
           return searchedProductsNames.stream()
                         .anyMatch(element -> element.getText().toLowerCase().contains(searchedProduct));
     }
-    static List<Map<String,String>> products= new ArrayList<>();
+
     @FindBy(css = "div.productinfo.text-center p")
     private List<WebElement> productNames;
     @FindBy(css = "div.productinfo.text-center h2")
@@ -64,27 +59,9 @@ public class ProductsPage extends BasePage{
 
         String name = productNames.get(index).getText();
         String price = productPrices.get(index).getText();
-
-        addProductToProductsList("product-"+rowNumber,name,price);
-    }
-    public void addProductToProductsList(String id,String name,String price){
-        Map<String,String> info= new HashMap<>();
-        info.put("id",id);
-        info.put("name",name);
-        info.put("price",price);
         int quantity=1;
-        info.put("quantity",String.valueOf(quantity));
-        for (Map<String, String> map : products) {
-            if (map.get("id").contains(info.get("id"))) {
-                quantity = Integer.parseInt(map.get("quantity")) + 1;
-                map.put("quantity", String.valueOf(quantity));
-                return;
-            }
-        }
-        ProductsPage.products.add(info);
+        addProductToCart("product-"+rowNumber,name,price,quantity);
     }
-    public void clickViewCartOrContinueShopping(String choice){
-        WebElement element = Driver.get().findElement(By.xpath("//div[@class='modal-content']//*[text()='" + choice + "']"));
-        BrowserUtils.clickWithJS(element);
-    }
+
+
 }

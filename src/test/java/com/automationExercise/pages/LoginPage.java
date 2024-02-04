@@ -1,16 +1,12 @@
 package com.automationExercise.pages;
 
 import com.automationExercise.utilities.Driver;
-import com.github.javafaker.Faker;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class LoginPage extends BasePage {
-
-
-
 
     @FindBy(css = "div.signup-form>h2")
     private WebElement newUserSignupText;
@@ -35,11 +31,11 @@ public class LoginPage extends BasePage {
     private WebElement signupErrorMessage;
 
     public void fillOutSingUpForm(){
-        nameInputBox.sendKeys(newUserName);
-        emailInputBoxOnSignUpForm.sendKeys(newUserEmail);
+        nameInputBox.sendKeys(newUserData.get("firstName"));
+        emailInputBoxOnSignUpForm.sendKeys(newUserData.get("email"));
     }
     public void fillOutSingUpForm(String email){
-        nameInputBox.sendKeys(newUserName);
+        nameInputBox.sendKeys(newUserData.get("firstName"));
         emailInputBoxOnSignUpForm.sendKeys(email);
     }
     public void fillOutLoginForm(String email,String password){

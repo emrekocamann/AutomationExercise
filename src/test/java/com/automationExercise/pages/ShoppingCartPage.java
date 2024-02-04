@@ -11,6 +11,10 @@ import java.util.*;
 public class ShoppingCartPage extends BasePage{
 
     static Set<String> idOfProductsAddedToCart = new HashSet<>();
+    @FindBy(xpath = "//li[text()='Shopping Cart']")
+    private WebElement shoppingCartBreadcrumbText;
+    @FindBy(xpath = "//a[text()='Proceed To Checkout']")
+    private  WebElement proceedToCheckoutButton;
     @FindBy(xpath = "//tbody/tr")
     private List<WebElement> listOfProductsInTheCart;
     @FindBy(xpath = "//tbody/tr/td[@class='cart_description']/h4/a")
@@ -28,23 +32,23 @@ public class ShoppingCartPage extends BasePage{
         return verifyProductId();
     }
     public boolean verifyProductId(){
-        for (int i = 0; i <ProductsPage.products.size() ; i++) {
-            idOfProductsAddedToCart.remove((ProductsPage.products.get(i).get("id")));
+        for (int i = 0; i < AddToCart.listOfProductsAddedToCart.size() ; i++) {
+            idOfProductsAddedToCart.remove((AddToCart.listOfProductsAddedToCart.get(i).get("id")));
         }
         return idOfProductsAddedToCart.isEmpty();
     }
 
     public boolean verifyProductNamesOrPrices(List<WebElement> elements, String info){
         for (int i = 0; i < elements.size(); i++) {
-            if (!ProductsPage.products.get(i).get(info).equals(BrowserUtils.getElementsText(elements).get(i)))
+            if (!AddToCart.listOfProductsAddedToCart.get(i).get(info).equals(BrowserUtils.getElementsText(elements).get(i)))
                 return false;
         }
         return  true;
     }
 
     public boolean verifyQuantity(){
-        for (int i = 0; i < ProductsPage.products.size(); i++) {
-           if (!listOfProductQuantitiesInTheCart.get(i).getText().equals(ProductsPage.products.get(i).get("quantity")))
+        for (int i = 0; i < AddToCart.listOfProductsAddedToCart.size(); i++) {
+           if (!listOfProductQuantitiesInTheCart.get(i).getText().equals(AddToCart.listOfProductsAddedToCart.get(i).get("quantity")))
                 return false;
         }
         return true;
