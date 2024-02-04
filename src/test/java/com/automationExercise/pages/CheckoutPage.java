@@ -40,7 +40,7 @@ public class CheckoutPage extends BasePage{
        String expectedCountry=newUserData.get("country");
        String expectedPhoneNumber=newUserData.get("phoneNumber");
 
-       return expectedFullNane.equals(addressDetails.get(1).getText())
+        return expectedFullNane.equals(addressDetails.get(1).getText())
                && expectedCompany.equals(addressDetails.get(2).getText())
                && expectedAddress1.equals(addressDetails.get(3).getText())
                && expectedAddress2.equals(addressDetails.get(4).getText())
@@ -58,7 +58,7 @@ public class CheckoutPage extends BasePage{
 
     public boolean verifyProductNamesOrPrices(List<WebElement> elements, String info){
         for (int i = 0; i < elements.size(); i++) {
-            if (!AddToCart.listOfProductsAddedToCart.get(i).get(info).equals(BrowserUtils.getElementsText(elements).get(i)))
+           if (!AddToCart.listOfProductsAddedToCart.get(i).get(info).equals(BrowserUtils.getElementsText(elements).get(i)))
                 return false;
         }
         return  true;
@@ -66,13 +66,12 @@ public class CheckoutPage extends BasePage{
 
     public boolean verifyQuantity(){
         for (int i = 0; i < AddToCart.listOfProductsAddedToCart.size(); i++) {
-            if (!listOfProductQuantitiesInTheCart.get(i).getText().equals(AddToCart.listOfProductsAddedToCart.get(i).get("quantity")))
+             if (!listOfProductQuantitiesInTheCart.get(i).getText().equals(AddToCart.listOfProductsAddedToCart.get(i).get("quantity")))
                 return false;
         }
         return true;
     }
     public boolean verifyTotalPrices(){
-        BrowserUtils.waitFor(4);
         int price=0;
         String totalPrice ="Rs. "+ price;
         for (WebElement element : listOfProductTotalPricesInTheCart) {

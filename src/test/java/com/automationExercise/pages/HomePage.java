@@ -26,13 +26,13 @@ public class HomePage extends BasePage implements AddToCart {
     public void clickViewProductsWithProductsIndex(int index){
         BrowserUtils.scrollToElement(viewProductsButtons.get(index));
         viewProductsButtons.get(index).click();
-        currentProductNum = index+1;
+        currentProductId = index+1;
     }
     public void clickViewProductWithName(String productName){
         WebElement addToCartButton = Driver.get().findElement(By.xpath("" +
                 "((//p[text()='" + productName + "'])[1]/ancestor::div[@class='product-image-wrapper']//a)[2]"));
 
-        currentProductNum=Integer.parseInt(addToCartButton.getAttribute("data-product-id"));
+        currentProductId =Integer.parseInt(addToCartButton.getAttribute("data-product-id"));
         Driver.get().findElement(By.xpath(
                 "(//p[text()='"+productName+"'])[1]/ancestor::div[@class='product-image-wrapper']//*[text()='View Product']"))
                 .click();

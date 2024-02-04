@@ -31,16 +31,19 @@ public class LoginPage extends BasePage {
     private WebElement signupErrorMessage;
 
     public void fillOutSingUpForm(){
+        createNewUserWithFaker();
         nameInputBox.sendKeys(newUserData.get("firstName"));
         emailInputBoxOnSignUpForm.sendKeys(newUserData.get("email"));
     }
     public void fillOutSingUpForm(String email){
+        createNewUserWithFaker();
         nameInputBox.sendKeys(newUserData.get("firstName"));
         emailInputBoxOnSignUpForm.sendKeys(email);
     }
     public void fillOutLoginForm(String email,String password){
         emailInputBoxOnLoginForm.sendKeys(email);
         passwordInputBoxOnLoginForm.sendKeys(password);
+        createDataWithActualUser(email,password);
     }
     public boolean verifyThatUserIsNavigatedToLoginPage() {
         String expectedUrl = "https://automationexercise.com/login";

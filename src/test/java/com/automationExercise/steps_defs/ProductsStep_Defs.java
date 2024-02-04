@@ -32,7 +32,7 @@ public class ProductsStep_Defs {
     @Then("User is landed to product detail page")
     public void user_is_landed_to_product_detail_page() {
         String actualUrl = Driver.get().getCurrentUrl();
-        String expectedEndPoint= "product_details/"+ BasePage.currentProductNum;
+        String expectedEndPoint= "product_details/"+ BasePage.currentProductId;
         Assert.assertTrue(actualUrl.contains(expectedEndPoint));
     }
     @Then("Verify that detail is visible: product name, category, price, availability, condition, brand")

@@ -1,5 +1,6 @@
 package com.automationExercise.steps_defs;
 
+import com.automationExercise.pages.BasePage;
 import com.automationExercise.pages.HomePage;
 import com.automationExercise.pages.LoginPage;
 import com.automationExercise.pages.SignUpPage;
@@ -98,6 +99,7 @@ public class RegisterStep_Defs {
         String actualText = signUpPage.getAccountDeletedText().getText();
         Assert.assertEquals(expectedText,actualText);
         click_continue_button();
+        signUpPage.deleteUserData();
     }
 
 
@@ -117,6 +119,5 @@ public class RegisterStep_Defs {
         loginPage.fillOutSingUpForm();
         loginPage.getSignUpButton().click();
         signUpPage.fillFullForm();
-
     }
 }

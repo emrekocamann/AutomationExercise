@@ -92,7 +92,6 @@ public class SignUpPage extends BasePage{
         select.selectByValue("2013");
     }
     public void fillAddressInfo() {
-
         firstNameInputBox.sendKeys(newUserData.get("firstName"));
         lastNameInputBox.sendKeys(newUserData.get("lastName"));
         companyInputBox.sendKeys(newUserData.get("company"));
@@ -106,7 +105,6 @@ public class SignUpPage extends BasePage{
         BrowserUtils.scrollToElement(cityInputBox);
         zipcodeInputBox.sendKeys(newUserData.get("zipCode"));
         mobileNumberInputBox.sendKeys(newUserData.get("phoneNumber"));
-
     }
 
     private String createPasswordWithFaker() {

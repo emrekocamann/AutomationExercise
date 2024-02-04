@@ -17,22 +17,10 @@ public abstract class BasePage {
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
     }
-    protected static Map<String, String> newUserData = new HashMap<>();
-
+    protected static Map<String, String> newUserData = null;
     Faker faker = new Faker();
-//    public static final String newUserName;
-//    public static final String newUserLastName;
-//    public static  final String newUserEmail;
-//    public static final String companyName;
-//    public static final String address1;
-//    public static final String address2;
-//    public static final String country;
-//    public static final String state;
-//    public static final String cityName;
-//    public static final String zipCode;
-//    public static final String phoneNumber;
-    public static int currentProductNum;
-//    public static Map<String,String> createNewUserDataWithFaker(){
+    public static int currentProductId;
+//    static {
 //        Faker faker = new Faker();
 //        String newUserName= faker.name().firstName();
 //        String newUserEmail=newUserName.toLowerCase()+faker.internet().emailAddress();
@@ -45,61 +33,66 @@ public abstract class BasePage {
 //        String cityName=faker.address().cityName();
 //        String zipCode=faker.address().zipCode();
 //        String phoneNumber=faker.phoneNumber().cellPhone();
-//        Map<String,String> userInfo= new HashMap<>();
-//        userInfo.put("firstName",newUserName);
-//        userInfo.put("lastName",newUserLastName);
-//        userInfo.put("email",newUserEmail);
-//        userInfo.put("company",companyName);
-//        userInfo.put("address1",address1);
-//        userInfo.put("address2",address2);
-//        userInfo.put("country",country);
-//        userInfo.put("state",state);
-//        userInfo.put("city",cityName);
-//        userInfo.put("zipCode",zipCode);
-//        userInfo.put("phoneNumber",phoneNumber);
 //
-//        return userInfo;
+//        newUserData.put("firstName",newUserName);
+//        newUserData.put("lastName",newUserLastName);
+//        newUserData.put("email",newUserEmail);
+//        newUserData.put("company",companyName);
+//        newUserData.put("address1",address1);
+//        newUserData.put("address2",address2);
+//        newUserData.put("country",country);
+//        newUserData.put("state",state);
+//        newUserData.put("city",cityName);
+//        newUserData.put("zipCode",zipCode);
+//        newUserData.put("phoneNumber",phoneNumber);
 //    }
+    public void createNewUserWithFaker(){
+            newUserData = new HashMap<>();
+            String newUserName= faker.name().firstName();
+            String newUserEmail=newUserName.toLowerCase()+faker.internet().emailAddress();
+            String newUserLastName=faker.name().lastName();
+            String companyName = faker.company().name();
+            String address1=faker.address().fullAddress();
+            String address2=faker.address().fullAddress();
+            String country="United States";
+            String state=faker.address().state();
+            String cityName=faker.address().cityName();
+            String zipCode=faker.address().zipCode();
+            String phoneNumber=faker.phoneNumber().cellPhone();
 
-    static {
-    //    Faker faker = new Faker();
-  //      newUserName = faker.name().firstName();
-   //     newUserEmail = newUserName.toLowerCase()+faker.internet().emailAddress();
- //       newUserLastName = faker.name().lastName();
-//        companyName = faker.company().name();
-//        address1=faker.address().fullAddress();
-//        address2=faker.address().fullAddress();
-//        country="United States";
-//        state=faker.address().state();
-//        cityName=faker.address().cityName();
-//        zipCode=faker.address().zipCode();
-//        phoneNumber=faker.phoneNumber().cellPhone();
-        Faker faker = new Faker();
-        String newUserName= faker.name().firstName();
-        String newUserEmail=newUserName.toLowerCase()+faker.internet().emailAddress();
-        String newUserLastName=faker.name().lastName();
-        String companyName = faker.company().name();
-        String address1=faker.address().fullAddress();
-        String address2=faker.address().fullAddress();
-        String country="United States";
-        String state=faker.address().state();
-        String cityName=faker.address().cityName();
-        String zipCode=faker.address().zipCode();
-        String phoneNumber=faker.phoneNumber().cellPhone();
-
-        newUserData.put("firstName",newUserName);
-        newUserData.put("lastName",newUserLastName);
-        newUserData.put("email",newUserEmail);
-        newUserData.put("company",companyName);
-        newUserData.put("address1",address1);
-        newUserData.put("address2",address2);
-        newUserData.put("country",country);
-        newUserData.put("state",state);
-        newUserData.put("city",cityName);
-        newUserData.put("zipCode",zipCode);
-        newUserData.put("phoneNumber",phoneNumber);
+            newUserData.put("firstName",newUserName);
+            newUserData.put("lastName",newUserLastName);
+            newUserData.put("email",newUserEmail);
+            newUserData.put("company",companyName);
+            newUserData.put("address1",address1);
+            newUserData.put("address2",address2);
+            newUserData.put("country",country);
+            newUserData.put("state",state);
+            newUserData.put("city",cityName);
+            newUserData.put("zipCode",zipCode);
+            newUserData.put("phoneNumber",phoneNumber);
     }
-
+    public void createDataWithActualUser(String email,String password){
+        if (email.equals("erin.green@hotmail.com")&&password.equals("12606")){
+            newUserData = new HashMap<>();
+            newUserData.put("firstName","Van");
+            newUserData.put("lastName","Koch");
+            newUserData.put("email","erin.green@hotmail.com");
+            newUserData.put("company","Hammes-Collins");
+            newUserData.put("address1","766 Shanelle Ridges, East Zacheryhaven, WI 66904-5322");
+            newUserData.put("address2","Suite 528 3883 Bailey Highway, Wittingborough, WV 27882");
+            newUserData.put("country","United States");
+            newUserData.put("state","North Carolina");
+            newUserData.put("city","Torphyberg");
+            newUserData.put("zipCode","07221");
+            newUserData.put("phoneNumber","362-177-4239");
+        }
+    }
+    public void deleteUserData(){
+        if (newUserData!=null){
+            newUserData = null;
+        }
+    }
     @FindBy(xpath = "//div[@class='col-sm-8']//li//*[contains(.,'Home')]")
     protected WebElement homeButton;
     @FindBy(xpath = "//h2[text()='Subscription']")

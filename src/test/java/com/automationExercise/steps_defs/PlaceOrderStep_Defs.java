@@ -1,16 +1,22 @@
 package com.automationExercise.steps_defs;
 
-import com.automationExercise.pages.CheckoutPage;
-import com.automationExercise.pages.HomePage;
-import com.automationExercise.pages.ShoppingCartPage;
+import com.automationExercise.pages.*;
+import com.automationExercise.utilities.BrowserUtils;
+import com.automationExercise.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class PlaceOrderStep_Defs {
     HomePage homePage = new HomePage();
     ShoppingCartPage cartPage = new ShoppingCartPage();
     CheckoutPage checkoutPage = new CheckoutPage();
+    PaymentPage paymentPage = new PaymentPage();
+    LoginPage loginPage = new LoginPage();
     @Given("Add products to cart")
     public void add_products_to_cart() {
         homePage.hoverAndClickAddToCartWithRowNumber(3);
@@ -40,14 +46,19 @@ public class PlaceOrderStep_Defs {
     }
     @Then("Enter payment details: Name on Card, Card Number, CVC, Expiration date")
     public void enter_payment_details_name_on_card_card_number_cvc_expiration_date() {
-
+        paymentPage.fillOutPaymentInfo();
     }
-    @Then("Click {string} button")
-    public void click_button(String string) {
-
+    @Then("Click Pay and Confirm Order button")
+    public void click_button() {
+            paymentPage.getPayAndConfirmOrderButton().click();
     }
     @Then("Verify success message {string}")
-    public void verify_success_message(String string) {
-
+    public void verify_success_message(String expectedMessage) {
+        Assert.assertEquals(expectedMessage,paymentPage.getSuccessMessage().getText().trim());
+    }
+    @Given("Fill {string}, {string} and click Login button")
+    public void fill_and_click_login_button(String email, String password) {
+        loginPage.fillOutLoginForm(email,password);
+        loginPage.getLoginButton().click();
     }
 }

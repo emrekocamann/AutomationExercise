@@ -33,7 +33,7 @@ public class ProductsPage extends BasePage implements AddToCart {
     public void clickViewProductsWithProductsIndex(int index){
         BrowserUtils.scrollToElement(viewProductsButtons.get(index));
         viewProductsButtons.get(index).click();
-        currentProductNum = index+1;
+        currentProductId = index+1;
     }
 
     public void searchProducts(String productName) {
