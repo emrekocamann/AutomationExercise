@@ -27,8 +27,9 @@ public class ContactUsPage extends BasePage {
     private WebElement homeButton;
 
     public void fillOutContactUsForm(){
-        nameInputBox.sendKeys(newUserName);
-        emailInputBox.sendKeys(newUserEmail);
+        createNewUserWithFaker();
+        nameInputBox.sendKeys(newUserData.get("firstName"));
+        emailInputBox.sendKeys(newUserData.get("email"));
         String subject = faker.ancient().hero();
         subjectInputBox.sendKeys(subject);
         String message = faker.lorem().paragraph();

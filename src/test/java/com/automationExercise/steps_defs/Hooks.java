@@ -1,5 +1,8 @@
 package com.automationExercise.steps_defs;
 
+import com.automationExercise.pages.AddToCart;
+import com.automationExercise.pages.BasePage;
+import com.automationExercise.pages.HomePage;
 import com.automationExercise.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -22,6 +25,7 @@ public class Hooks {
             final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot,"image/png","screenshot");
         }
+        AddToCart.listOfProductsAddedToCart.clear();
         Driver.closeDriver();
     }
 }

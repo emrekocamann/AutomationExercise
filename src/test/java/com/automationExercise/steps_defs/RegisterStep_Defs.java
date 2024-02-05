@@ -1,5 +1,6 @@
 package com.automationExercise.steps_defs;
 
+import com.automationExercise.pages.BasePage;
 import com.automationExercise.pages.HomePage;
 import com.automationExercise.pages.LoginPage;
 import com.automationExercise.pages.SignUpPage;
@@ -95,6 +96,7 @@ public class RegisterStep_Defs {
     }
     @Then("Verify that {string} is visible and click Continue button")
     public void verify_that_is_visible_and_click_button(String expectedText) {
+        signUpPage.deleteUserData();
         String actualText = signUpPage.getAccountDeletedText().getText();
         Assert.assertEquals(expectedText,actualText);
         click_continue_button();
@@ -111,5 +113,11 @@ public class RegisterStep_Defs {
         String actualErrorMessage = loginPage.getSignupErrorMessage().getText();
         Assert.assertTrue(loginPage.getSignupErrorMessage().isDisplayed());
         Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
+    }
+    @When("Fill all details in Signup and create account")
+    public void fill_all_details_in_signup_and_create_account() {
+        loginPage.fillOutSingUpForm();
+        loginPage.getSignUpButton().click();
+        signUpPage.fillFullForm();
     }
 }

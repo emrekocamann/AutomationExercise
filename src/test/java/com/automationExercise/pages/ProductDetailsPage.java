@@ -1,14 +1,12 @@
 package com.automationExercise.pages;
 
+import com.automationExercise.utilities.Driver;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import java.util.HashMap;
-import java.util.Map;
-import static com.automationExercise.pages.ProductsPage.products;
 
 @Getter
-public class ProductDetailsPage extends BasePage{
+public class ProductDetailsPage extends BasePage implements AddToCart {
 
     @FindBy(css = "div.product-information h2")
     private WebElement productName;
@@ -27,20 +25,22 @@ public class ProductDetailsPage extends BasePage{
     @FindBy(css = "button[type='button']")
     private WebElement addToCartButton;
 
-    public void addProductToProductsList(String id,String name,String price,String quantity){
-        Map<String,String> info= new HashMap<>();
-        info.put("id",id);
-        info.put("name",name);
-        info.put("price",price);
-        info.put("quantity",quantity);
-        for (Map<String, String> map : products) {
-            if (map.get("id").contains(info.get("id"))) {
-                quantity = String.valueOf(Integer.parseInt(map.get("quantity")) + Integer.parseInt(quantity));
-                map.put("quantity", quantity);
-                return;
-            }
-        }
-        products.add(info);
+
+    public void clickAddToCartButtonAndAddProductToCart(){
+        String price = productPrice.getText();
+        String currentUrl = Driver.get().getCurrentUrl();
+        String id = currentUrl.substring(currentUrl.lastIndexOf("/")+1);
+        String name = productName.getText();
+        int quantity = Integer.parseInt(quantityInputBox.getAttribute("value"));
+        addProductToCart(id,name,price,quantity);
+
+        addToCartButton.click();
     }
+
+    public void increaseQuantityTo(int quantity) {
+        quantityInputBox.clear();
+        quantityInputBox.sendKeys(String.valueOf(quantity));
+    }
+
 
 }

@@ -8,9 +8,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Map;
+
 @Getter
 public class SignUpPage extends BasePage{
     LoginPage loginPage = new LoginPage();
+
 
     @FindBy(xpath = "//b[text()='Enter Account Information']")
     private WebElement enterAccountInfoText;
@@ -63,12 +66,19 @@ public class SignUpPage extends BasePage{
     @FindBy(xpath = "//*[text()='Account Deleted!']")
     private WebElement accountDeletedText;
 
+    public void fillFullForm(){
+        fillAccountInfoForm();
+        selectCheckBoxWithText("Sign up for our newsletter!");
+        selectCheckBoxWithText("Receive special offers from our partners!");
+        fillAddressInfo();
+        getCreateAccountButton().click();
+    }
 
     public void fillAccountInfoForm(){
         titleMrRadioButton.click();
         if (!verifyNameAndEmail()){
-            nameInputBox.sendKeys(LoginPage.newUserName);
-            emailInputBox.sendKeys(LoginPage.newUserEmail);
+            nameInputBox.sendKeys(newUserData.get("firstName"));
+            emailInputBox.sendKeys(newUserData.get("email"));
         }
         String password = createPasswordWithFaker();
         passwordInputBox.sendKeys(password);
@@ -82,20 +92,19 @@ public class SignUpPage extends BasePage{
         select.selectByValue("2013");
     }
     public void fillAddressInfo() {
-        firstNameInputBox.sendKeys(LoginPage.newUserName);
-        lastNameInputBox.sendKeys(faker.name().lastName());
-        companyInputBox.sendKeys(faker.company().name());
+        firstNameInputBox.sendKeys(newUserData.get("firstName"));
+        lastNameInputBox.sendKeys(newUserData.get("lastName"));
+        companyInputBox.sendKeys(newUserData.get("company"));
         BrowserUtils.scrollToElement(companyInputBox);
-        addressInputBox.sendKeys(faker.address().fullAddress());
-        address2InputBox.sendKeys(faker.address().fullAddress());
+        addressInputBox.sendKeys(newUserData.get("address1"));
+        address2InputBox.sendKeys(newUserData.get("address2"));
         Select select = new Select(countryDropDownMenu);
-        select.selectByVisibleText("United States");
-        stateInputBox.sendKeys(faker.address().state());
-        cityInputBox.sendKeys(faker.address().cityName());
+        select.selectByVisibleText(newUserData.get("country"));
+        stateInputBox.sendKeys(newUserData.get("state"));
+        cityInputBox.sendKeys(newUserData.get("city"));
         BrowserUtils.scrollToElement(cityInputBox);
-        zipcodeInputBox.sendKeys(faker.address().zipCode());
-        mobileNumberInputBox.sendKeys(faker.phoneNumber().cellPhone());
-
+        zipcodeInputBox.sendKeys(newUserData.get("zipCode"));
+        mobileNumberInputBox.sendKeys(newUserData.get("phoneNumber"));
     }
 
     private String createPasswordWithFaker() {
@@ -104,7 +113,7 @@ public class SignUpPage extends BasePage{
     private boolean verifyNameAndEmail(){
         String nameValue = nameInputBox.getAttribute("value");
         String emailValue = emailInputBox.getAttribute("value");
-        return  LoginPage.newUserName.equals(nameValue)&&LoginPage.newUserEmail.equals(emailValue);
+        return  newUserData.get("firstName").equals(nameValue)&&newUserData.get("email").equals(emailValue);
     }
 
     public void selectCheckBoxWithText(String checkboxText){
