@@ -96,10 +96,10 @@ public class RegisterStep_Defs {
     }
     @Then("Verify that {string} is visible and click Continue button")
     public void verify_that_is_visible_and_click_button(String expectedText) {
+        signUpPage.deleteUserData();
         String actualText = signUpPage.getAccountDeletedText().getText();
         Assert.assertEquals(expectedText,actualText);
         click_continue_button();
-        signUpPage.deleteUserData();
     }
 
 

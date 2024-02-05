@@ -20,32 +20,6 @@ public abstract class BasePage {
     protected static Map<String, String> newUserData = null;
     Faker faker = new Faker();
     public static int currentProductId;
-//    static {
-//        Faker faker = new Faker();
-//        String newUserName= faker.name().firstName();
-//        String newUserEmail=newUserName.toLowerCase()+faker.internet().emailAddress();
-//        String newUserLastName=faker.name().lastName();
-//        String companyName = faker.company().name();
-//        String address1=faker.address().fullAddress();
-//        String address2=faker.address().fullAddress();
-//        String country="United States";
-//        String state=faker.address().state();
-//        String cityName=faker.address().cityName();
-//        String zipCode=faker.address().zipCode();
-//        String phoneNumber=faker.phoneNumber().cellPhone();
-//
-//        newUserData.put("firstName",newUserName);
-//        newUserData.put("lastName",newUserLastName);
-//        newUserData.put("email",newUserEmail);
-//        newUserData.put("company",companyName);
-//        newUserData.put("address1",address1);
-//        newUserData.put("address2",address2);
-//        newUserData.put("country",country);
-//        newUserData.put("state",state);
-//        newUserData.put("city",cityName);
-//        newUserData.put("zipCode",zipCode);
-//        newUserData.put("phoneNumber",phoneNumber);
-//    }
     public void createNewUserWithFaker(){
             newUserData = new HashMap<>();
             String newUserName= faker.name().firstName();

@@ -28,6 +28,13 @@ public interface AddToCart {
           }
           listOfProductsAddedToCart.add(product);
      }
+     default void removeProductToCart(String productId){
+          for (Map<String, String> products : listOfProductsAddedToCart) {
+               if (products.get("id").equals(productId)){
+                    products.remove("id");
+               }
+          }
+     }
      default void clickViewCartOrContinueShopping(String choice){
           WebElement element = Driver.get().findElement(By.xpath("//div[@class='modal-content']//*[text()='" + choice + "']"));
           BrowserUtils.clickWithJS(element);

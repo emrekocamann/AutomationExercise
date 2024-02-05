@@ -6,6 +6,7 @@ import com.automationExercise.pages.ShoppingCartPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.Assert;
 
 public class CartStep_Defs {
 
@@ -44,5 +45,13 @@ public class CartStep_Defs {
     @Then("Verify that product is displayed in cart page with exact quantity")
     public void verify_that_product_is_displayed_in_cart_page_with_exact_quantity() {
         shoppingCartPage.verifyQuantity();
+    }
+    @When("Click X button corresponding to particular product")
+    public void click_x_button_corresponding_to_particular_product() {
+        shoppingCartPage.removeProductFromCartWithProductId("product-5");
+    }
+    @Then("Verify that product is removed from the cart")
+    public void verify_that_product_is_removed_from_the_cart() {
+        Assert.assertTrue(shoppingCartPage.verifyRemoveFromCart("product-5"));
     }
 }

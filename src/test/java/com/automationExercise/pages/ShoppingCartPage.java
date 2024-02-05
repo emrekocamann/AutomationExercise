@@ -1,16 +1,17 @@
 package com.automationExercise.pages;
 
 import com.automationExercise.utilities.BrowserUtils;
+import com.automationExercise.utilities.Driver;
 import lombok.Getter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.*;
 
 @Getter
-public class ShoppingCartPage extends BasePage{
+public class ShoppingCartPage extends BasePage implements AddToCart{
 
-    static Set<String> idOfProductsAddedToCart = new HashSet<>();
     @FindBy(xpath = "//li[text()='Shopping Cart']")
     private WebElement shoppingCartBreadcrumbText;
     @FindBy(xpath = "//a[text()='Proceed To Checkout']")
@@ -23,19 +24,28 @@ public class ShoppingCartPage extends BasePage{
     private List<WebElement>  listOfProductPricesInTheCart;
     @FindBy(xpath = "//tbody/tr/td[@class='cart_quantity']/button")
     private List<WebElement>  listOfProductQuantitiesInTheCart;
-
     @FindBy(xpath = "//tbody/tr/td[@class='cart_total']/p")
     private List<WebElement> listOfProductTotalPricesInTheCart;
+    @FindBy(xpath = "//tbody/tr/td[@class='cart_delete']/a")
+    private List<WebElement> xButtons;
 
 
     public boolean verifyProductsAreAddedToCart(){
         return verifyProductId();
     }
     public boolean verifyProductId(){
-        for (int i = 0; i < AddToCart.listOfProductsAddedToCart.size() ; i++) {
-            idOfProductsAddedToCart.remove((AddToCart.listOfProductsAddedToCart.get(i).get("id")));
+        loop1:
+        for (WebElement element : listOfProductsInTheCart) {
+            String id1 = element.getAttribute("id");
+            for (Map<String, String> map : listOfProductsAddedToCart) {
+                String id2 = map.get("id");
+                if (id1.equals(id2)) {
+                    continue loop1;
+                }
+            }
+            return false;
         }
-        return idOfProductsAddedToCart.isEmpty();
+       return true;
     }
 
     public boolean verifyProductNamesOrPrices(List<WebElement> elements, String info){
@@ -62,5 +72,13 @@ public class ShoppingCartPage extends BasePage{
                 return false;
         }
         return true;
+    }
+    public void removeProductFromCartWithProductId(String productId){
+        Driver.get().findElement(By.xpath("//tbody/tr[@id='"+productId+"']/td[@class='cart_delete']/a")).click();
+        removeProductToCart(productId);
+    }
+    public boolean verifyRemoveFromCart(String productId){
+        return  listOfProductsInTheCart.stream().anyMatch(
+                element -> !element.getAttribute("id").contains(productId));
     }
 }
