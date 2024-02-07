@@ -1,8 +1,8 @@
 package com.automationExercise.steps_defs;
 
 import com.automationExercise.pages.HomePage;
+import com.automationExercise.pages.LeftSideBar;
 import com.automationExercise.pages.ProductsPage;
-import com.automationExercise.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,19 +10,19 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class CategoryStep_Defs {
-    HomePage homePage = new HomePage();
+    LeftSideBar leftSideBar = new LeftSideBar();
     ProductsPage productsPage = new ProductsPage();
     @Given("Verify that categories are visible on left side bar")
     public void verify_that_categories_are_visible_on_left_side_bar() {
-        Assert.assertTrue(homePage.getCategoryPanel().isDisplayed());
+        Assert.assertTrue(leftSideBar.getCategoryPanel().isDisplayed());
     }
     @When("On left side bar, Click on {string} category")
     public void click_on_category(String categoryName) {
-        homePage.clickCategory(categoryName);
+        leftSideBar.clickCategory(categoryName);
     }
     @When("Click on {string} link under main {string}")
     public void click_on_link_under_main_category(String subCategoryName,String categoryName) {
-        homePage.clickSubCategory2(subCategoryName,categoryName);
+        leftSideBar.clickSubCategory(subCategoryName,categoryName);
     }
     @Then("Verify that category page is displayed and confirm text {string}")
     public void verify_that_category_page_is_displayed_and_confirm_text(String title) {
@@ -31,11 +31,11 @@ public class CategoryStep_Defs {
 
     @And("On left side bar, Click on {string} category on new page")
     public void onLeftSideBarClickOnCategory(String categoryName) {
-        homePage.clickCategory(categoryName);
+        leftSideBar.clickCategory(categoryName);
     }
 
     @And("Click on  {string} link of {string} category on new page")
     public void onLeftSideBarClickOnLinkOfCategory(String subCategoryName,String categoryName) {
-        homePage.clickSubCategory2(subCategoryName,categoryName);
+        leftSideBar.clickSubCategory(subCategoryName,categoryName);
     }
 }
