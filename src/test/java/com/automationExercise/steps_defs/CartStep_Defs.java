@@ -54,4 +54,17 @@ public class CartStep_Defs {
     public void verify_that_product_is_removed_from_the_cart() {
         Assert.assertTrue(shoppingCartPage.verifyRemoveFromCart("product-5"));
     }
+    @When("Add those products to cart")
+    public void add_those_products_to_cart() {
+        int numberOfProduct = homePage.getProductsList().size();
+        for (int i = 0; i < numberOfProduct; i++) {
+            homePage.hoverAndClickAddToCartWithRowNumber(i+1);
+            homePage.clickViewCartOrContinueShopping("Continue Shopping");
+        }
+    }
+    @Then("Verify that those products are visible in cart after login as well")
+    public void verify_that_those_products_are_visible_in_cart_after_login_as_well() {
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+        Assert.assertTrue(shoppingCartPage.verifyProductsAreAddedToCart());
+    }
 }

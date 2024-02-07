@@ -47,6 +47,8 @@ public class HomePage extends BasePage implements AddToCart {
         String name = productNames.get(index).getText();
         String price = productPrices.get(index).getText();
         int quantity=1;
-        addProductToCart("product-"+rowNumber,name,price,quantity);
+        String id = addToCartButtonsOnOverlay.get(index).getAttribute("data-product-id");
+     //   addProductToCart("product-"+rowNumber,name,price,quantity);
+        addProductToCart("product-"+id,name,price,quantity);
     }
 }

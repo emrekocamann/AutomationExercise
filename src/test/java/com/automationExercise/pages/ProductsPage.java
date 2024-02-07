@@ -45,7 +45,7 @@ public class ProductsPage extends BasePage implements AddToCart {
     }
     public boolean verifyAllTheProductsRelatedToSearchAreVisible(){
           return searchedProductsNames.stream()
-                        .anyMatch(element -> element.getText().toLowerCase().contains(searchedProduct));
+                        .anyMatch(element -> element.getText().toLowerCase().contains(searchedProduct.toLowerCase()));
     }
 
     @FindBy(css = "div.productinfo.text-center p")

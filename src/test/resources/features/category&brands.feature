@@ -24,7 +24,7 @@ Feature: View Category Products
       | KIDS     | DRESS         | KIDS - DRESS PRODUCTS         | WOMEN      | DRESS          | WOMEN - DRESS PRODUCTS        |
       | KIDS     | TOPS & SHIRTS | KIDS - TOPS & SHIRTS PRODUCTS | WOMEN      | SAREE          | WOMEN - SAREE PRODUCTS        |
 
-  @wip
+
   Scenario Outline: Test Case 19: View & Cart Brand Products
     Given Click on "Products" button on header
     And Verify that Brands are visible on left side bar
