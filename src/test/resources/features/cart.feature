@@ -24,7 +24,7 @@ Feature: Add to Cart / Remove Products From Cart
       And Click Add to cart button on product details page
       And Click 'View Cart' button on PopUp
       Then Verify that product is displayed in cart page with exact quantity
-    @wip
+
     Scenario: Test Case 17: Remove Products From Cart
       Given Add products to cart
       And Click on "Cart" button on header

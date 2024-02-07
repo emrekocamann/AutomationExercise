@@ -12,6 +12,8 @@ public class ProductsPage extends BasePage implements AddToCart {
     private String searchedProduct;
     @FindBy(xpath = "//h2[text()='All Products']")
     private WebElement allProductsText;
+    @FindBy(css = "h2.title.text-center")
+    private WebElement pageTitle;
     @FindBy(css = "div.features_items")
     private WebElement allProducts;
     @FindBy(css = "div.features_items div.col-sm-4")
@@ -61,6 +63,10 @@ public class ProductsPage extends BasePage implements AddToCart {
         String price = productPrices.get(index).getText();
         int quantity=1;
         addProductToCart("product-"+rowNumber,name,price,quantity);
+    }
+
+    public boolean verifyPageTitle(String expectedTitle){
+        return pageTitle.getText().equalsIgnoreCase(expectedTitle);
     }
 
 
