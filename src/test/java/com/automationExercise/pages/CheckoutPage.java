@@ -11,6 +11,8 @@ import java.util.List;
 public class CheckoutPage extends BasePage{
     @FindBy(css = "ul#address_delivery li")
     private List<WebElement> addressDetails;
+    @FindBy(css = "ul#address_invoice li")
+    private List<WebElement> billingAddressDetails;
     @FindBy(xpath = "//tbody/tr/td[@class='cart_description']/h4/a")
     private List<WebElement> listOfProductNamesInTheCart;
     @FindBy(xpath = "//tbody/tr/td[@class='cart_price']/p")
@@ -47,6 +49,23 @@ public class CheckoutPage extends BasePage{
                && expectedCityStatePostCode.equals(addressDetails.get(5).getText())
                && expectedCountry.equals(addressDetails.get(6).getText())
                && expectedPhoneNumber.equals(addressDetails.get(7).getText());
+    }
+    public boolean verifyBillingAddressDetails(){
+        String expectedFullNane= "Mr. "+ newUserData.get("firstName")+" "+newUserData.get("lastName");
+        String expectedCompany= newUserData.get("company");
+        String expectedAddress1 =newUserData.get("address1");
+        String expectedAddress2 =newUserData.get("address2");
+        String expectedCityStatePostCode =newUserData.get("city")+" "+newUserData.get("state")+" "+newUserData.get("zipCode");
+        String expectedCountry=newUserData.get("country");
+        String expectedPhoneNumber=newUserData.get("phoneNumber");
+
+        return expectedFullNane.equals(billingAddressDetails.get(1).getText())
+                && expectedCompany.equals(billingAddressDetails.get(2).getText())
+                && expectedAddress1.equals(billingAddressDetails.get(3).getText())
+                && expectedAddress2.equals(billingAddressDetails.get(4).getText())
+                && expectedCityStatePostCode.equals(billingAddressDetails.get(5).getText())
+                && expectedCountry.equals(billingAddressDetails.get(6).getText())
+                && expectedPhoneNumber.equals(billingAddressDetails.get(7).getText());
     }
     public boolean reviewYourOrder(){
         BrowserUtils.scrollToElement(listOfProductNamesInTheCart.get(0));

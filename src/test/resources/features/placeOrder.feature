@@ -58,4 +58,19 @@ Feature: Place Order
     And Verify success message "Congratulations! Your order has been confirmed!" after payment
   #  And Click on "Delete Account" button on header
   #  And Verify that "ACCOUNT DELETED!" is visible and click Continue button
+  @wip
+  Scenario: Test Case 23: Verify address details in checkout page
+    Given Click on "Signup / Login" button on header
+    And Fill all details in Signup and create account
+    And Verify that ACCOUNT CREATED! is visible
+    And Click Continue button
+    And Verify that Logged in as username is visible
+    When Add products to cart
+    And Click on "Cart" button on header
+    And Verify that cart page is displayed
+    Then Click Proceed To Checkout button
+    And Verify that the delivery address is same address filled at the time registration of account
+    And Verify that the billing address is same address filled at the time registration of account
+    And Click on "Delete Account" button on header
+    And Verify that "ACCOUNT DELETED!" is visible and click Continue button
 

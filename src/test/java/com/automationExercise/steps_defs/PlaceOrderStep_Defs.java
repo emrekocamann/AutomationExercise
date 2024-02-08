@@ -61,4 +61,12 @@ public class PlaceOrderStep_Defs {
         loginPage.fillOutLoginForm(email,password);
         loginPage.getLoginButton().click();
     }
+    @Then("Verify that the delivery address is same address filled at the time registration of account")
+    public void verify_that_the_delivery_address_is_same_address_filled_at_the_time_registration_of_account() {
+        Assert.assertTrue(checkoutPage.verifyAddressDetails());
+    }
+    @Then("Verify that the billing address is same address filled at the time registration of account")
+    public void verify_that_the_billing_address_is_same_address_filled_at_the_time_registration_of_account() {
+        Assert.assertTrue(checkoutPage.verifyBillingAddressDetails());
+    }
 }
