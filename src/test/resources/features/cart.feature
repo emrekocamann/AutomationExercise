@@ -42,3 +42,10 @@ Feature: Add to Cart / Remove Products From Cart
       And Enter correct "erin.green@hotmail.com" address and "1260612606"
       And Click on "Cart" button on header
       Then Verify that those products are visible in cart after login as well
+  @wip
+    Scenario: Test Case 22: Add to cart from Recommended items
+      Given Scroll down to footer
+      And Verify 'RECOMMENDED ITEMS' are visible
+      When Click on Add To Cart on any recommended product
+      And Click 'View Cart' button on PopUp
+      Then Verify that products are added to Cart

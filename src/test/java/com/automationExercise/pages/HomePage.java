@@ -23,16 +23,18 @@ public class HomePage extends BasePage implements AddToCart {
     private List<WebElement> productPrices;
     @FindBy(xpath = "//div[@class='product-overlay']//a[text()='Add to cart']")
     private List<WebElement> addToCartButtonsOnOverlay;
+    @FindBy(css = ".recommended_items > h2")
+    private WebElement recommendedItemsText;
+    @FindBy(css = "div#recommended-item-carousel p")
+    private List <WebElement> recommendedItemsNames;
+    @FindBy(css = "div#recommended-item-carousel h2")
+    private List <WebElement> recommendedItemsPrices;
+    @FindBy(xpath = "//div[@id='recommended-item-carousel']//a[text()='Add to cart']")
+    private List <WebElement> addToCartButtonsOnRecommendedItems;
 
-    public void clickViewProductsWithProductsIndex(int index){
-        BrowserUtils.scrollToElement(viewProductsButtons.get(index));
-        viewProductsButtons.get(index).click();
-        currentProductId = index+1;
-    }
     public void clickViewProductWithName(String productName){
         WebElement addToCartButton = Driver.get().findElement(By.xpath("" +
                 "((//p[text()='" + productName + "'])[1]/ancestor::div[@class='product-image-wrapper']//a)[2]"));
-
         currentProductId =Integer.parseInt(addToCartButton.getAttribute("data-product-id"));
         Driver.get().findElement(By.xpath(
                 "(//p[text()='"+productName+"'])[1]/ancestor::div[@class='product-image-wrapper']//*[text()='View Product']"))
@@ -48,7 +50,14 @@ public class HomePage extends BasePage implements AddToCart {
         String price = productPrices.get(index).getText();
         int quantity=1;
         String id = addToCartButtonsOnOverlay.get(index).getAttribute("data-product-id");
-     //   addProductToCart("product-"+rowNumber,name,price,quantity);
         addProductToCart("product-"+id,name,price,quantity);
+    }
+    public void clickAddToCartOnRecommendedItemsWithRowNumber(int rowNumber){
+        int index= rowNumber-1;
+        BrowserUtils.clickWithJS(addToCartButtonsOnRecommendedItems.get(index));
+        String name = recommendedItemsNames.get(index).getText();
+        String price = recommendedItemsPrices.get(index).getText();
+        String id = addToCartButtonsOnRecommendedItems.get(index).getAttribute("data-product-id");
+        addProductToCart("product-"+id,name,price,1);
     }
 }

@@ -18,7 +18,7 @@ Feature: Products
     And  Enter "jeans" in search input and click search button
     And Verify that "SEARCHED PRODUCTS" title is visible
     Then Verify all the products related to search are visible
-  @wip
+
   Scenario: Test Case 21: Add review on product
     Given Click on View Product of first product
     And Verify "Write Your Review" is visible

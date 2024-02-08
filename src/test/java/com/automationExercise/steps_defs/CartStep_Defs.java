@@ -3,6 +3,7 @@ package com.automationExercise.steps_defs;
 import com.automationExercise.pages.HomePage;
 import com.automationExercise.pages.ProductDetailsPage;
 import com.automationExercise.pages.ShoppingCartPage;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.assertj.core.api.SoftAssertions;
@@ -66,5 +67,13 @@ public class CartStep_Defs {
     public void verify_that_those_products_are_visible_in_cart_after_login_as_well() {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         Assert.assertTrue(shoppingCartPage.verifyProductsAreAddedToCart());
+    }
+    @Given("Verify {string} are visible")
+    public void verify_are_visible(String title) {
+        Assert.assertTrue(title.equalsIgnoreCase(homePage.getRecommendedItemsText().getText().trim()));
+    }
+    @When("Click on Add To Cart on any recommended product")
+    public void click_on_add_to_cart_on_any_recommended_product() {
+        homePage.clickAddToCartOnRecommendedItemsWithRowNumber(6);
     }
 }

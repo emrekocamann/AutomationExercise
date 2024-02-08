@@ -15,6 +15,6 @@ Feature: Subscribed
     And Navigate to url "http://automationexercise.com"
     And Verify that home page is visible successfully
     And Click on "Cart" button on header
-    When  Scroll down to footer
+    When Scroll down to footer
     And Enter email address in input and click arrow button
     Then Verify success message "You have been successfully subscribed!" is visible on footer
