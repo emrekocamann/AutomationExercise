@@ -21,7 +21,7 @@ Feature: Place Order
     And Enter description in comment text area and click Place Order
     And Enter payment details: Name on Card, Card Number, CVC, Expiration date
     And Click Pay and Confirm Order button
-    And Verify success message "Congratulations! Your order has been confirmed!"
+    And Verify success message "Congratulations! Your order has been confirmed!" after payment
     And Click on "Delete Account" button on header
     And Verify that "ACCOUNT DELETED!" is visible and click Continue button
 
@@ -39,7 +39,7 @@ Feature: Place Order
     And Enter description in comment text area and click Place Order
     And Enter payment details: Name on Card, Card Number, CVC, Expiration date
     And Click Pay and Confirm Order button
-    And Verify success message "Congratulations! Your order has been confirmed!"
+    And Verify success message "Congratulations! Your order has been confirmed!" after payment
     And Click on "Delete Account" button on header
     And Verify that "ACCOUNT DELETED!" is visible and click Continue button
 
@@ -55,7 +55,7 @@ Feature: Place Order
     And Enter description in comment text area and click Place Order
     And Enter payment details: Name on Card, Card Number, CVC, Expiration date
     And Click Pay and Confirm Order button
-    And Verify success message "Congratulations! Your order has been confirmed!"
+    And Verify success message "Congratulations! Your order has been confirmed!" after payment
   #  And Click on "Delete Account" button on header
   #  And Verify that "ACCOUNT DELETED!" is visible and click Continue button
 

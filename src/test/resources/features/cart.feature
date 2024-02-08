@@ -28,7 +28,7 @@ Feature: Add to Cart / Remove Products From Cart
       And  Verify that cart page is displayed
       When Click X button corresponding to particular product
       Then Verify that product is removed from the cart
-  @wip
+
     Scenario: Test Case 20: Search Products and Verify Cart After Login
       Given Click on "Products" button on header
       And Verify user is navigated to ALL PRODUCTS page successfully

@@ -6,6 +6,7 @@ import com.automationExercise.pages.ProductsPage;
 import com.automationExercise.pages.ShoppingCartPage;
 import com.automationExercise.utilities.BrowserUtils;
 import com.automationExercise.utilities.Driver;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.assertj.core.api.SoftAssertions;
@@ -71,5 +72,19 @@ public class ProductsStep_Defs {
     public void verify_that_products_are_added_to_cart() {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         Assert.assertTrue(shoppingCartPage.verifyProductsAreAddedToCart());
+    }
+
+    @Given("Verify {string} is visible")
+    public void verify_is_visible(String text) {
+        Assert.assertTrue(text.equalsIgnoreCase(detailsPage.getWriteYourReviewText().getText().trim()));
+    }
+    @When("Enter name, email and review and Click Submit button")
+    public void enter_name_email_and_review() {
+        detailsPage.writeReviewWithFaker();
+    }
+
+    @Then("Verify success message {string} after review")
+    public void verifySuccessMessageAfterReview(String message) {
+        Assert.assertEquals(message,detailsPage.getReviewSuccessMessage().getText().trim());
     }
 }

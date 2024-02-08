@@ -52,7 +52,7 @@ public class PlaceOrderStep_Defs {
     public void click_button() {
             paymentPage.getPayAndConfirmOrderButton().click();
     }
-    @Then("Verify success message {string}")
+    @Then("Verify success message {string} after payment")
     public void verify_success_message(String expectedMessage) {
         Assert.assertEquals(expectedMessage,paymentPage.getSuccessMessage().getText().trim());
     }

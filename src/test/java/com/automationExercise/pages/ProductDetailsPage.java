@@ -24,6 +24,20 @@ public class ProductDetailsPage extends BasePage implements AddToCart {
     private WebElement quantityInputBox;
     @FindBy(css = "button[type='button']")
     private WebElement addToCartButton;
+    @FindBy(css = "li.active")
+    private WebElement writeYourReviewText;
+    @FindBy(id = "name")
+    private WebElement nameInputBox;
+    @FindBy(id = "email")
+    private WebElement emailInputBox;
+    @FindBy(name = "review")
+    private WebElement reviewInputBox;
+
+    @FindBy(id = "button-review")
+    private WebElement submitButton;
+
+    @FindBy(css = "div[id='review-section'] span")
+    private WebElement reviewSuccessMessage;
 
 
     public void clickAddToCartButtonAndAddProductToCart(){
@@ -42,5 +56,11 @@ public class ProductDetailsPage extends BasePage implements AddToCart {
         quantityInputBox.sendKeys(String.valueOf(quantity));
     }
 
+    public void writeReviewWithFaker(){
+        nameInputBox.sendKeys(faker.name().fullName());
+        emailInputBox.sendKeys(faker.internet().emailAddress());
+        reviewInputBox.sendKeys(faker.lorem().paragraph());
+        submitButton.click();
+    }
 
 }
