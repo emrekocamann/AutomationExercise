@@ -24,6 +24,7 @@ public class PaymentPage extends BasePage{
     @FindBy(xpath = "//p[text()='Congratulations! Your order has been confirmed!']")
     private WebElement successMessage;
 
+
     public void fillOutPaymentInfo() {
         String name = newUserData.get("firstName")+" "+newUserData.get("lastName");
         String cardNumber = faker.business().creditCardNumber();

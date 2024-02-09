@@ -6,6 +6,7 @@ import com.automationExercise.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -69,4 +70,14 @@ public class PlaceOrderStep_Defs {
     public void verify_that_the_billing_address_is_same_address_filled_at_the_time_registration_of_account() {
         Assert.assertTrue(checkoutPage.verifyBillingAddressDetails());
     }
+    @Then("Click {string} button")
+    public void click_button_and_verify_invoice_is_downloaded_successfully(String text) {
+        Driver.get().findElement(By.xpath("//a[text()='"+text+"']")).click();
+        BrowserUtils.waitFor(5);
+    }
+    @Then("Verify invoice is downloaded successfully.")
+    public void verify_invoice_is_downloaded_successfully() {
+        BrowserUtils.verifyDownloadedFile("invoice.txt");
+    }
+
 }

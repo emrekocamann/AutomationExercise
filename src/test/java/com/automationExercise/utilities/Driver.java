@@ -25,19 +25,8 @@ public class Driver {
         if (driver==null){
             String browser = ConfigurationReader.get("browser");
             switch (browser.trim().toLowerCase()){
-                case "chrome"->{   ChromeOptions options = new ChromeOptions();
-
-                    Map<String, Object> prefs = new HashMap<>();
-                    prefs.put("profile.default_content_setting_values.notifications", 2);
-                    prefs.put("autofill.profile_enabled", false);
-                    options.setExperimentalOption("prefs", prefs);      //for disable save address
-
-                    options.addArguments("--start-maximized");      //full screen
-
-                    options.addExtensions(new File("src/test/resources/extensions/UBlock_Origin.crx")); //add blocker
-                    driver= new ChromeDriver(options);
-                }
-                case "chrome-headless"->driver= new ChromeDriver(new ChromeOptions().addArguments("--headless=new"));
+                case "chrome"-> driver= new ChromeDriver(chromeOptions());
+                case "chrome-headless"->driver= new ChromeDriver(chromeOptions().addArguments("--headless=new"));
                 case "firefox" -> driver = new FirefoxDriver();
                 case "firefox-headless" -> driver = new FirefoxDriver(new FirefoxOptions().addArguments("--headless=new"));
                 case "ie"-> {
@@ -69,5 +58,18 @@ public class Driver {
             driver.quit();
             driver = null;
         }
+    }
+    private static ChromeOptions chromeOptions(){
+        ChromeOptions options = new ChromeOptions();
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("profile.default_content_setting_values.notifications", 2);
+        prefs.put("autofill.profile_enabled", false);
+        String location= System.getProperty("user.dir")+"\\src\\test\\resources\\DownloadFiles";
+        prefs.put("download.default_directory",location);          //for download files to the project
+        options.setExperimentalOption("prefs", prefs);      //for disable save address
+        options.addArguments("--start-maximized");      //full screen
+        options.addExtensions(new File("src/test/resources/extensions/UBlock_Origin.crx")); //add blocker
+
+        return options;
     }
 }

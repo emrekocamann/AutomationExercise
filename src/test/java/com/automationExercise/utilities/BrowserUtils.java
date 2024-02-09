@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,5 +52,21 @@ public class BrowserUtils {
             list.add(element.getText());
         }
         return list;
+    }
+    public static void verifyDownloadedFile(String expectedFileName){
+        File folder = new File(System.getProperty("user.dir")+"/src/test/resources\\DownloadFiles");
+        File[] files =folder.listFiles();
+        boolean isFilePresent=false;
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()){
+                    String fileName = file.getName();
+                    if (fileName.equals(expectedFileName)){
+                      isFilePresent =true;
+                    }
+                }
+            }
+        }
+        Assert.assertTrue(isFilePresent);
     }
 }
