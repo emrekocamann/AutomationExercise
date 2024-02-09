@@ -32,10 +32,7 @@ public class BrowserUtils {
         WebDriverWait wait = new WebDriverWait(Driver.get(), Duration.ofSeconds(7));
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
-    public static void scrollDown(int scrollSize) {
-        ((JavascriptExecutor) Driver.get()).executeScript("window.scrollBy(0,"+scrollSize+")");
-    }
-    public static void scrollToElement(WebElement element) {
+     public static void scrollToElement(WebElement element) {
         ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
     public static void clickWithJS(WebElement element) {

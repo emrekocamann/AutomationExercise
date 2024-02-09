@@ -31,6 +31,8 @@ public class HomePage extends BasePage implements AddToCart {
     private List <WebElement> recommendedItemsPrices;
     @FindBy(xpath = "//div[@id='recommended-item-carousel']//a[text()='Add to cart']")
     private List <WebElement> addToCartButtonsOnRecommendedItems;
+    @FindBy(id = "scrollUp")
+    private WebElement scrollUpButton;
 
     public void clickViewProductWithName(String productName){
         WebElement addToCartButton = Driver.get().findElement(By.xpath("" +

@@ -73,7 +73,7 @@ Feature: Place Order
     And Verify that the billing address is same address filled at the time registration of account
     And Click on "Delete Account" button on header
     And Verify that "ACCOUNT DELETED!" is visible and click Continue button
-  @wip
+
   Scenario: Test Case 24: Download Invoice after purchase order
     Given Add products to cart
     And Click on "Cart" button on header
