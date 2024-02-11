@@ -71,11 +71,11 @@ public class SignUpPage extends BasePage{
         selectCheckBoxWithText("Sign up for our newsletter!");
         selectCheckBoxWithText("Receive special offers from our partners!");
         fillAddressInfo();
-        getCreateAccountButton().click();
+        BrowserUtils.clickWithJS(createAccountButton);
     }
 
     public void fillAccountInfoForm(){
-        titleMrRadioButton.click();
+        BrowserUtils.clickWithJS(titleMrRadioButton);
         if (!verifyNameAndEmail()){
             nameInputBox.sendKeys(newUserData.get("firstName"));
             emailInputBox.sendKeys(newUserData.get("email"));
@@ -117,7 +117,9 @@ public class SignUpPage extends BasePage{
     }
 
     public void selectCheckBoxWithText(String checkboxText){
-        Driver.get().findElement(By.xpath("//*[text()='"+checkboxText+"']")).click();
+        BrowserUtils.clickWithJS(
+                Driver.get().findElement(
+                        By.xpath("//*[text()='"+checkboxText+"']")));
     }
 }
 

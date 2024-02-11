@@ -1,6 +1,5 @@
 package com.automationExercise.steps_defs;
 
-import com.automationExercise.pages.BasePage;
 import com.automationExercise.pages.HomePage;
 import com.automationExercise.pages.LoginPage;
 import com.automationExercise.pages.SignUpPage;
@@ -11,10 +10,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
-
 
 public class RegisterStep_Defs {
 
@@ -74,9 +69,9 @@ public class RegisterStep_Defs {
     public void fill_details_first_name_last_name_company_address_address2_country_state_city_zipcode_mobile_number(){
         signUpPage.fillAddressInfo();
     }
-    @Then("Click Create Account button")
-    public void click() {
-        signUpPage.getCreateAccountButton().click();
+    @When("Click Create Account button")
+    public void clickCreateAccountButton() {
+        BrowserUtils.clickWithJS(signUpPage.getCreateAccountButton());
     }
     @Then("Verify that ACCOUNT CREATED! is visible")
     public void verify_that_account_created_is_visible() {
@@ -87,7 +82,7 @@ public class RegisterStep_Defs {
 
     @Then("Click Continue button")
     public void click_continue_button() {
-        signUpPage.getContinueButtonOnAccountCreatedPage().click();
+        BrowserUtils.clickWithJS(signUpPage.getContinueButtonOnAccountCreatedPage());
     }
 
     @Then("Verify that Logged in as username is visible")
@@ -111,13 +106,13 @@ public class RegisterStep_Defs {
     @Then("Verify error {string} is visible on signup form")
     public void verifyErrorEmailAddressAlreadyExistIsVisibleOnSignupForm(String expectedErrorMessage) {
         String actualErrorMessage = loginPage.getSignupErrorMessage().getText();
-        Assert.assertTrue(loginPage.getSignupErrorMessage().isDisplayed());
+        BrowserUtils.verifyElementDisplayed(loginPage.getSignupErrorMessage());
         Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
     }
     @When("Fill all details in Signup and create account")
     public void fill_all_details_in_signup_and_create_account() {
         loginPage.fillOutSingUpForm();
-        loginPage.getSignUpButton().click();
+        BrowserUtils.clickWithJS(loginPage.getSignUpButton());
         signUpPage.fillFullForm();
     }
 }

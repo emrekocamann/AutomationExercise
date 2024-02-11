@@ -29,7 +29,7 @@ public class CheckoutPage extends BasePage{
     @FindBy(xpath = "//a[text()='Place Order']")
     private WebElement placeOrderButton;
 
-    public void typeCommentInTExtArea(){
+    public void typeCommentInTextArea(){
         commentTextArea.sendKeys(faker.lorem().sentence());
     }
 

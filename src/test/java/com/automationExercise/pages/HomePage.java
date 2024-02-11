@@ -38,9 +38,9 @@ public class HomePage extends BasePage implements AddToCart {
         WebElement addToCartButton = Driver.get().findElement(By.xpath("" +
                 "((//p[text()='" + productName + "'])[1]/ancestor::div[@class='product-image-wrapper']//a)[2]"));
         currentProductId =Integer.parseInt(addToCartButton.getAttribute("data-product-id"));
-        Driver.get().findElement(By.xpath(
-                "(//p[text()='"+productName+"'])[1]/ancestor::div[@class='product-image-wrapper']//*[text()='View Product']"))
-                .click();
+        BrowserUtils.clickWithJS(Driver.get().findElement(By.xpath(
+                      "(//p[text()='"+productName+"'])[1]/" +
+                              "ancestor::div[@class='product-image-wrapper']//*[text()='View Product']")));
     }
     public void hoverAndClickAddToCartWithRowNumber(int rowNumber){
         int index= rowNumber-1;

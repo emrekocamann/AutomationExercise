@@ -7,10 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import org.openqa.selenium.WebElement;
 
 public class PlaceOrderStep_Defs {
     HomePage homePage = new HomePage();
@@ -29,11 +26,11 @@ public class PlaceOrderStep_Defs {
     }
     @Given("Verify that cart page is displayed")
     public void verify_that_cart_page_is_displayed() {
-        Assert.assertTrue(cartPage.getShoppingCartBreadcrumbText().isDisplayed());
+        BrowserUtils.verifyElementDisplayed(cartPage.getShoppingCartBreadcrumbText());
     }
     @Given("Click Proceed To Checkout button")
     public void click_proceed_to_checkout_button() {
-       cartPage.getProceedToCheckoutButton().click();
+       BrowserUtils.clickWithJS(cartPage.getProceedToCheckoutButton());
     }
     @Then("Verify Address Details and Review Your Order")
     public void verify_address_details_and_review_your_order() {
@@ -42,8 +39,8 @@ public class PlaceOrderStep_Defs {
     }
     @Then("Enter description in comment text area and click Place Order")
     public void enter_description_in_comment_text_area_and_click() {
-        checkoutPage.typeCommentInTExtArea();
-        checkoutPage.getPlaceOrderButton().click();
+        checkoutPage.typeCommentInTextArea();
+        BrowserUtils.clickWithJS(checkoutPage.getPlaceOrderButton());
     }
     @Then("Enter payment details: Name on Card, Card Number, CVC, Expiration date")
     public void enter_payment_details_name_on_card_card_number_cvc_expiration_date() {
@@ -51,7 +48,7 @@ public class PlaceOrderStep_Defs {
     }
     @Then("Click Pay and Confirm Order button")
     public void click_button() {
-            paymentPage.getPayAndConfirmOrderButton().click();
+           BrowserUtils.clickWithJS(paymentPage.getPayAndConfirmOrderButton());
     }
     @Then("Verify success message {string} after payment")
     public void verify_success_message(String expectedMessage) {
@@ -60,7 +57,7 @@ public class PlaceOrderStep_Defs {
     @Given("Fill {string}, {string} and click Login button")
     public void fill_and_click_login_button(String email, String password) {
         loginPage.fillOutLoginForm(email,password);
-        loginPage.getLoginButton().click();
+        BrowserUtils.clickWithJS(loginPage.getLoginButton());
     }
     @Then("Verify that the delivery address is same address filled at the time registration of account")
     public void verify_that_the_delivery_address_is_same_address_filled_at_the_time_registration_of_account() {
@@ -72,7 +69,8 @@ public class PlaceOrderStep_Defs {
     }
     @Then("Click {string} button")
     public void click_button_and_verify_invoice_is_downloaded_successfully(String text) {
-        Driver.get().findElement(By.xpath("//a[text()='"+text+"']")).click();
+        WebElement downloadInvoiceBtn = Driver.get().findElement(By.xpath("//a[text()='" + text + "']"));
+        BrowserUtils.clickWithJS(downloadInvoiceBtn);
         BrowserUtils.waitFor(5);
     }
     @Then("Verify invoice is downloaded successfully.")

@@ -20,7 +20,7 @@ public class SubscribedStep_Defs {
     }
     @When("Verify text SUBSCRIPTION")
     public void verify_text_subscription() {
-        Assert.assertTrue(homePage.getSubscriptionTextOnFooter().isDisplayed());
+       BrowserUtils.verifyElementDisplayed(homePage.getSubscriptionTextOnFooter());
     }
     @When("Enter email address in input and click arrow button")
     public void enter_email_address_in_input_and_click_arrow_button() {
@@ -30,11 +30,11 @@ public class SubscribedStep_Defs {
     public void verify_success_message_is_visible_on_footer(String expectedMessage) {
         String actualMessage= homePage.getSubscribedSuccessMessage().getText();
         Assert.assertEquals(expectedMessage,actualMessage);
-        Assert.assertTrue(homePage.getSubscribedSuccessMessage().isDisplayed());
+        BrowserUtils.verifyElementDisplayed(homePage.getSubscribedSuccessMessage());
     }
     @When("Click on arrow at bottom right side to move upward")
     public void click_on_arrow_at_bottom_right_side_to_move_upward() {
-        homePage.getScrollUpButton().click();
+        BrowserUtils.clickWithJS(homePage.getScrollUpButton());
     }
     @Then("Verify that page is scrolled up and {string} text is visible on screen")
     public void verify_that_page_is_scrolled_up_and_text_is_visible_on_screen(String expectedText) {

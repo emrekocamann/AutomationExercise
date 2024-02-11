@@ -41,7 +41,7 @@ public class ProductsPage extends BasePage implements AddToCart {
     public void searchProducts(String productName) {
         searchedProduct= productName;
         searchBox.sendKeys(productName);
-        searchButton.click();
+        BrowserUtils.clickWithJS(searchButton);
     }
     public boolean verifyAllTheProductsRelatedToSearchAreVisible(){
           return searchedProductsNames.stream()
@@ -56,7 +56,6 @@ public class ProductsPage extends BasePage implements AddToCart {
         int index= rowNumber-1;
         BrowserUtils.hover(productsList.get(index));
         BrowserUtils.clickWithJS( addToCartButtonsOnOverlay.get(index));
-       // ShoppingCartPage.idOfProductsAddedToCart.add("product-"+rowNumber);
         BrowserUtils.waitFor(1);
 
         String name = productNames.get(index).getText();

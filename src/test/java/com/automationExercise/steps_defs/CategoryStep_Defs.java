@@ -1,8 +1,8 @@
 package com.automationExercise.steps_defs;
 
-import com.automationExercise.pages.HomePage;
 import com.automationExercise.pages.LeftSideBar;
 import com.automationExercise.pages.ProductsPage;
+import com.automationExercise.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,7 +14,7 @@ public class CategoryStep_Defs {
     ProductsPage productsPage = new ProductsPage();
     @Given("Verify that categories are visible on left side bar")
     public void verify_that_categories_are_visible_on_left_side_bar() {
-        Assert.assertTrue(leftSideBar.getCategoryPanel().isDisplayed());
+        BrowserUtils.verifyElementDisplayed(leftSideBar.getCategoryPanel());
     }
     @When("On left side bar, Click on {string} category")
     public void click_on_category(String categoryName) {

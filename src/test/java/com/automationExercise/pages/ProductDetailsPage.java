@@ -1,5 +1,6 @@
 package com.automationExercise.pages;
 
+import com.automationExercise.utilities.BrowserUtils;
 import com.automationExercise.utilities.Driver;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
@@ -48,7 +49,7 @@ public class ProductDetailsPage extends BasePage implements AddToCart {
         int quantity = Integer.parseInt(quantityInputBox.getAttribute("value"));
         addProductToCart(id,name,price,quantity);
 
-        addToCartButton.click();
+        BrowserUtils.clickWithJS(addToCartButton);
     }
 
     public void increaseQuantityTo(int quantity) {
@@ -60,7 +61,7 @@ public class ProductDetailsPage extends BasePage implements AddToCart {
         nameInputBox.sendKeys(faker.name().fullName());
         emailInputBox.sendKeys(faker.internet().emailAddress());
         reviewInputBox.sendKeys(faker.lorem().paragraph());
-        submitButton.click();
+        BrowserUtils.clickWithJS(submitButton);
     }
 
 }

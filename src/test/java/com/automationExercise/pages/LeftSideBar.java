@@ -18,7 +18,8 @@ public class LeftSideBar extends BasePage {
 
     public void clickCategory(String categoryName) {
         BrowserUtils.scrollToElement(categoryPanel);
-        Driver.get().findElement(By.xpath("//a[contains(.,'" + categoryFormatter(categoryName) + "')]")).click();
+        BrowserUtils.clickWithJS(Driver.get().findElement(By.xpath(
+                "//a[contains(.,'" + categoryFormatter(categoryName) + "')]")));
         BrowserUtils.waitFor(2);
     }
 
@@ -74,7 +75,7 @@ public class LeftSideBar extends BasePage {
         } else {
             brand = categoryFormatter(brand);
             WebElement element = Driver.get().findElement(By.xpath("//a[text()='" + brand + "']"));
-            element.click();
+            BrowserUtils.clickWithJS(element);
         }
     }
 

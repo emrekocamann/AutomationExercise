@@ -31,7 +31,7 @@ Feature: Add to Cart / Remove Products From Cart
 
     Scenario: Test Case 20: Search Products and Verify Cart After Login
       Given Click on "Products" button on header
-      And Verify user is navigated to ALL PRODUCTS page successfully
+      And Verify that "ALL PRODUCTS" title is visible
       And  Enter "Saree" in search input and click search button
       And Verify that "SEARCHED PRODUCTS" title is visible
       When Verify all the products related to search are visible

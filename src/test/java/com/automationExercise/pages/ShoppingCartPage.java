@@ -81,4 +81,11 @@ public class ShoppingCartPage extends BasePage implements AddToCart{
         return  listOfProductsInTheCart.stream().anyMatch(
                 element -> !element.getAttribute("id").contains(productId));
     }
+    public boolean verifyAllInfoInCart(){
+        return verifyProductNamesOrPrices(getListOfProductNamesInTheCart(), "name")
+                && verifyProductNamesOrPrices(getListOfProductPricesInTheCart(), "price")
+                && verifyProductId()
+                &&verifyQuantity()
+                &&verifyProductTotalPrices();
+    }
 }

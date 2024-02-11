@@ -1,6 +1,7 @@
 package com.automationExercise.steps_defs;
 
 import com.automationExercise.pages.LoginPage;
+import com.automationExercise.utilities.BrowserUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,7 +20,7 @@ public class LoginStep_Defs {
     }
     @When("Click Login button on Login page")
     public void click_button() {
-        loginPage.getLoginButton().click();
+        BrowserUtils.clickWithJS(loginPage.getLoginButton());
     }
     @When("Verify that Logged in as {string} is visible")
     public void verifyThatLoggedInAsIsVisible(String userName) {
@@ -32,7 +33,7 @@ public class LoginStep_Defs {
     @Then("Verify error {string} is visible on login form")
     public void verify_error_is_visible(String expectedErrorMessage) {
         String actualErrorMessage = loginPage.getLoginErrorMessage().getText();
-        Assert.assertTrue(loginPage.getLoginErrorMessage().isDisplayed());
+        BrowserUtils.verifyElementDisplayed(loginPage.getLoginErrorMessage());
         Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
     }
 

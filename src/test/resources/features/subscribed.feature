@@ -24,7 +24,7 @@ Feature: Subscribed
     And Click on arrow at bottom right side to move upward
     Then Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
 
-  @wip
+
   Scenario: Test Case 26: Verify Scroll Up without 'Arrow' button and Scroll Down functionality
     When  Scroll down to footer
     And Verify text SUBSCRIPTION

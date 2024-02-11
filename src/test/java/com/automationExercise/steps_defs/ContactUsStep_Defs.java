@@ -1,6 +1,7 @@
 package com.automationExercise.steps_defs;
 
 import com.automationExercise.pages.ContactUsPage;
+import com.automationExercise.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -21,7 +22,7 @@ public class ContactUsStep_Defs {
     }
     @When("Click Submit button")
     public void click_submit_button() {
-        contactUsPage.getSubmitButton().click();
+        BrowserUtils.clickWithJS(contactUsPage.getSubmitButton());
     }
     @When("Click OK button")
     public void click_ok_button() {
@@ -34,7 +35,7 @@ public class ContactUsStep_Defs {
     }
     @Then("Click Home button")
     public void click_button_and_verify_that_landed_to_home_page_successfully() {
-        contactUsPage.getHomeButton().click();
+        BrowserUtils.clickWithJS( contactUsPage.getHomeButton());
     }
 
 }

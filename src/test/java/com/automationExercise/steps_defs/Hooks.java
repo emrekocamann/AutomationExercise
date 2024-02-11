@@ -19,7 +19,7 @@ import java.time.Duration;
 public class Hooks {
     @Before
     public void setUp() throws IOException {
-        //Driver.get().manage().window().maximize();
+        Driver.get().manage().window().maximize();
         Driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         File folder = new File(System.getProperty("user.dir")+"\\src\\test\\resources\\DownloadFiles");
         FileUtils.cleanDirectory(folder);
