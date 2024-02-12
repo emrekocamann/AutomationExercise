@@ -6,15 +6,16 @@ There are [26 sample test scenarios](https://automationexercise.com/test_cases) 
 
 I used the following dependencies in this project;
 
-* [Selenium 4.17](###Selenium)
-* [Cucumber 7.4](###Cucumber)
-* [Cucumber-JUnit](###cucumber-junit)
-* [AssertJ](###AssertJ)
-* [JavaFaker](###JavaFaker)
-* [Lombok](###Lombok)
-* [commons-io](###commons-io)
+* [Selenium 4.17](https://github.com/emrekocamann/AutomationExercise/tree/master#selenium)
+* [Cucumber 7.4](https://github.com/emrekocamann/AutomationExercise/tree/master#cucumber)
+* [Cucumber-JUnit](https://github.com/emrekocamann/AutomationExercise/tree/master#cucumber-junit)
+* [AssertJ](https://github.com/emrekocamann/AutomationExercise/tree/master#assertj)
+* [JavaFaker](https://github.com/emrekocamann/AutomationExercise/tree/master#javafaker)
+* [Lombok](https://github.com/emrekocamann/AutomationExercise/tree/master#lombok)
+* [commons-io](https://github.com/emrekocamann/AutomationExercise/tree/master#commons-io)
 
 If you like this Repo, Please click the ⭐
+
 
 ### Selenium:
 
