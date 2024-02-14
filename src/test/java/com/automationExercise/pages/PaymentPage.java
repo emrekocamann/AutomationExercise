@@ -3,9 +3,6 @@ package com.automationExercise.pages;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.Random;
-
 @Getter
 public class PaymentPage extends BasePage{
 

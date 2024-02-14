@@ -1,5 +1,5 @@
 Feature: Logout User
-
+  @wip
   Scenario Outline: Test Case 4: Login and Logout
     Given Launch browser
     And Navigate to url "http://automationexercise.com"

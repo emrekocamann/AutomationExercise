@@ -55,6 +55,7 @@ public class ProductsPage extends BasePage implements AddToCart {
     public void hoverAndClickAddToCartWithRowNumber(int rowNumber){
         int index= rowNumber-1;
         BrowserUtils.hover(productsList.get(index));
+        BrowserUtils.waitFor(1);
         BrowserUtils.clickWithJS( addToCartButtonsOnOverlay.get(index));
         BrowserUtils.waitFor(1);
 

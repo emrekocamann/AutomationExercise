@@ -7,7 +7,7 @@ Feature: Positive and Negative Login Test
     Given Click on "Signup / Login" button on header
     Given Verify 'Login to your account' is visible on the login form
 
-
+  @wip
   Scenario Outline:Test Case 2: Login User with correct email and password
     When Enter correct "<email>" address and "<password>"
     When Click Login button on Login page
@@ -22,7 +22,7 @@ Feature: Positive and Negative Login Test
   #    | Nerystan.strosin@hotmail.com      | w6VxR^7A | Nery     |
   #    | Clementkristofer.prosacco@yahoo.com | Yn6XFbH5198 | Clement  |
 
-
+  @wip
   Scenario Outline:Test Case 3: Login User with incorrect email and password
     Given Enter incorrect "<email>" address and "<password>"
     When Click Login button on Login page

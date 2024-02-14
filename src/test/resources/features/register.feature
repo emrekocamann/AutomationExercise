@@ -6,7 +6,7 @@ Feature: Register
     And Verify that home page is visible successfully
     And Click on "Signup / Login" button on header
     And Verify "New User Signup!" is visible on the signup form
-
+  @wip
   Scenario: Positive Register Test -- Test Case:1 Register User
     When Enter name and email address
     When Click Signup button
