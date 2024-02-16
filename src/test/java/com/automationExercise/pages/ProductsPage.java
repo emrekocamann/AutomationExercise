@@ -4,7 +4,6 @@ import com.automationExercise.utilities.BrowserUtils;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 
 @Getter
@@ -55,9 +54,7 @@ public class ProductsPage extends BasePage implements AddToCart {
     public void hoverAndClickAddToCartWithRowNumber(int rowNumber){
         int index= rowNumber-1;
         BrowserUtils.hover(productsList.get(index));
-        BrowserUtils.waitFor(1);
         BrowserUtils.clickWithJS( addToCartButtonsOnOverlay.get(index));
-        BrowserUtils.waitFor(1);
 
         String name = productNames.get(index).getText();
         String price = productPrices.get(index).getText();
@@ -66,6 +63,7 @@ public class ProductsPage extends BasePage implements AddToCart {
     }
 
     public boolean verifyPageTitle(String expectedTitle){
+        BrowserUtils.waitForPageToLoad(20);
         return pageTitle.getText().equalsIgnoreCase(expectedTitle);
     }
 

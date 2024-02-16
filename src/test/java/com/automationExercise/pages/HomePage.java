@@ -43,9 +43,10 @@ public class HomePage extends BasePage implements AddToCart {
     }
     public void hoverAndClickAddToCartWithRowNumber(int rowNumber){
         int index= rowNumber-1;
+        BrowserUtils.waitFor(1);
+        BrowserUtils.scrollToElement(productsList.get(index));
         BrowserUtils.hover(productsList.get(index));
         BrowserUtils.clickWithJS( addToCartButtonsOnOverlay.get(index));
-        BrowserUtils.waitFor(1);
 
         String name = productNames.get(index).getText();
         String price = productPrices.get(index).getText();

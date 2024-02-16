@@ -9,7 +9,6 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
 
 public class SubscribedStep_Defs {

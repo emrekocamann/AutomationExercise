@@ -4,7 +4,7 @@ Feature: Place Order
     Given Launch browser
     And Navigate to url "http://automationexercise.com"
     And Verify that home page is visible successfully
-  @wip
+
   Scenario: Test Case 14: Place Order: Register while Checkout
     Given Add products to cart
     And Click on "Cart" button on header

@@ -4,7 +4,7 @@ Feature: Add to Cart / Remove Products From Cart
       Given Launch browser
       And Navigate to url "http://automationexercise.com"
       And Verify that home page is visible successfully
-   @wip
+
     Scenario: Test Case 12: Add Products in Cart
       And Click on "Products" button on header
       When Hover over product 1 and click Add to cart

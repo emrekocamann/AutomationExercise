@@ -4,7 +4,6 @@ import com.automationExercise.utilities.BrowserUtils;
 import com.automationExercise.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +36,7 @@ public interface AddToCart {
      }
      default void clickViewCartOrContinueShopping(String choice){
           WebElement element = Driver.get().findElement(By.xpath("//div[@class='modal-content']//*[text()='" + choice + "']"));
+          BrowserUtils.waitForVisibility(element);
           BrowserUtils.clickWithJS(element);
      }
 }

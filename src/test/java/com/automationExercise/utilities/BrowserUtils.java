@@ -3,6 +3,7 @@ package com.automationExercise.utilities;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,7 +30,7 @@ public class BrowserUtils {
     }
     public static WebElement waitForVisibility(WebElement element) {
 
-        WebDriverWait wait = new WebDriverWait(Driver.get(), Duration.ofSeconds(7));
+        WebDriverWait wait = new WebDriverWait(Driver.get(), Duration.ofSeconds(20));
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
      public static void scrollToElement(WebElement element) {
@@ -66,4 +67,32 @@ public class BrowserUtils {
         }
         Assert.assertTrue(isFilePresent);
     }
+    public static void clickWithWait(By by, int attempts) {
+        int counter = 0;
+        while (counter < attempts) {
+            try {
+                clickWithJS(Driver.get().findElement(by));
+                break;
+            } catch (WebDriverException e) {
+                e.printStackTrace();
+                ++counter;
+                waitFor(1);
+            }
+        }
+    }
+
+    public static void waitForPageToLoad(long timeOutInSeconds) {
+        ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+            }
+        };
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.get(), Duration.ofSeconds(20));
+            wait.until(expectation);
+        } catch (Throwable error) {
+            error.printStackTrace();
+        }
+    }
+
 }

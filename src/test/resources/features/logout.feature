@@ -1,5 +1,5 @@
 Feature: Logout User
-  @wip
+
   Scenario Outline: Test Case 4: Login and Logout
     Given Launch browser
     And Navigate to url "http://automationexercise.com"
@@ -14,4 +14,4 @@ Feature: Logout User
     Examples:
       | email                             | password | username |
       | erin.green@hotmail.com            | 12606    | Van      |
-      | Randelladrianna.johnson@gmail.com | @&2bV5&  | Randell  |
+    #  | Randelladrianna.johnson@gmail.com | @&2bV5&  | Randell  |

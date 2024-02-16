@@ -85,6 +85,11 @@ public abstract class BasePage {
         String locator= "//div[@class='col-sm-8']//a[contains(.,'"+menuName+"')]";
         WebElement menu= Driver.get().findElement(By.xpath(locator));
         BrowserUtils.clickWithJS(menu);
+        BrowserUtils.waitFor(1);
+        if (Driver.get().getCurrentUrl().contains("#google_vignette")) {
+            Driver.get().navigate().refresh();
+            navigateToMenu(menuName);
+        }
     }
     public boolean verifyThatLoggedInAsUsernameIsVisible(){
          return Driver.get().findElement(

@@ -68,7 +68,8 @@ public class CheckoutPage extends BasePage{
     }
     public boolean reviewYourOrder(){
         BrowserUtils.scrollToElement(listOfProductNamesInTheCart.get(0));
-       return verifyProductNamesOrPrices(listOfProductNamesInTheCart,"name")
+        BrowserUtils.waitFor(1);
+        return verifyProductNamesOrPrices(listOfProductNamesInTheCart,"name")
                && verifyProductNamesOrPrices(listOfProductPricesInTheCart,"price")
                && verifyQuantity()
                && verifyTotalPrices();

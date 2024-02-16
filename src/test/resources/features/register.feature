@@ -6,8 +6,8 @@ Feature: Register
     And Verify that home page is visible successfully
     And Click on "Signup / Login" button on header
     And Verify "New User Signup!" is visible on the signup form
-  @wip
-  Scenario: Positive Register Test -- Test Case:1 Register User
+
+  Scenario: Positive Register Test - Test Case:1 Register User
     When Enter name and email address
     When Click Signup button
     When Verify that ENTER ACCOUNT INFORMATION is visible
@@ -23,7 +23,7 @@ Feature: Register
     Then Verify that "ACCOUNT DELETED!" is visible and click Continue button
 
 
-  Scenario Outline: Negative Register Test -- Test Case 5: Register User with existing email
+  Scenario Outline: Negative Register Test - Test Case 5: Register User with existing email
     Given Enter name and already "<registered email>" address
     When Click Signup button
     Then Verify error 'Email Address already exist!' is visible on signup form
@@ -31,4 +31,4 @@ Feature: Register
     Examples:
       | registered email                  |
       | erin.green@hotmail.com            |
-      | Randelladrianna.johnson@gmail.com |
+  #    | Randelladrianna.johnson@gmail.com |

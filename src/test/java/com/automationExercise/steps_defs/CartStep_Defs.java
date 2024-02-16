@@ -3,6 +3,8 @@ package com.automationExercise.steps_defs;
 import com.automationExercise.pages.HomePage;
 import com.automationExercise.pages.ProductDetailsPage;
 import com.automationExercise.pages.ShoppingCartPage;
+import com.automationExercise.utilities.BrowserUtils;
+import com.automationExercise.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,7 +21,9 @@ public class CartStep_Defs {
     }
     @When("Click View Product for {string} on home page")
     public void click_view_product_for_on_home_page(String productName) {
-        homePage.clickViewProductWithName(productName);
+       do {
+           homePage.clickViewProductWithName(productName);
+       }while (Driver.get().getCurrentUrl().contains("google_vignette"));
     }
     @When("Increase quantity to {int}")
     public void increase_quantity_to(int quantity) {
@@ -39,6 +43,7 @@ public class CartStep_Defs {
     }
     @Then("Verify that product is removed from the cart")
     public void verify_that_product_is_removed_from_the_cart() {
+        BrowserUtils.waitFor(1);
         Assert.assertTrue(shoppingCartPage.verifyRemoveFromCart("product-5"));
     }
     @When("Add those products to cart")
