@@ -55,6 +55,7 @@ public class LeftSideBar extends BasePage {
         }
     }
 
+    /**Used to format category names in the Left Sidebar*/
     private String categoryFormatter(String categoryName) {
         StringBuilder newCategoryName = new StringBuilder();
         newCategoryName.append(Character.toUpperCase(categoryName.charAt(0)));

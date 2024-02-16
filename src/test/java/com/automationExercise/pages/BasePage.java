@@ -45,6 +45,8 @@ public abstract class BasePage {
             newUserData.put("zipCode",zipCode);
             newUserData.put("phoneNumber",phoneNumber);
     }
+
+    /**Used to verify address details of existing user information*/
     public void createDataWithActualUser(String email,String password){
         if (email.equals("erin.green@hotmail.com")&&password.equals("12606")){
             newUserData = new HashMap<>();
@@ -81,6 +83,9 @@ public abstract class BasePage {
     @FindBy(css = "div.modal-content")
     protected WebElement addedPopUp;
 
+    /**It is used to go to the menus in the header.
+     * @param menuName Accepts "Home", "Products", "Cart", "Signup / Login", "Test Cases", "API Testing", "Contact us"
+     */
     public void navigateToMenu(String menuName){
         String locator= "//div[@class='col-sm-8']//a[contains(.,'"+menuName+"')]";
         WebElement menu= Driver.get().findElement(By.xpath(locator));

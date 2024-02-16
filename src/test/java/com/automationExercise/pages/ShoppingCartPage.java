@@ -32,6 +32,7 @@ public class ShoppingCartPage extends BasePage implements AddToCart{
     public boolean verifyProductsAreAddedToCart(){
         return verifyProductId();
     }
+    /**Verifies the IDs of the products added to the cart*/
     public boolean verifyProductId(){
         loop1:
         for (WebElement element : listOfProductsInTheCart) {
@@ -47,6 +48,10 @@ public class ShoppingCartPage extends BasePage implements AddToCart{
        return true;
     }
 
+    /**Verifies the names and prices of products added to the cart
+     * @param elements product in cart
+     * @param info "name" or "price"
+     * */
     public boolean verifyProductNamesOrPrices(List<WebElement> elements, String info){
         for (int i = 0; i < elements.size(); i++) {
             if (!AddToCart.listOfProductsAddedToCart.get(i).get(info).equals(BrowserUtils.getElementsText(elements).get(i)))
@@ -76,6 +81,7 @@ public class ShoppingCartPage extends BasePage implements AddToCart{
         Driver.get().findElement(By.xpath("//tbody/tr[@id='"+productId+"']/td[@class='cart_delete']/a")).click();
         removeProductToCart(productId);
     }
+    /**removes the product from the cart and listOfProductsAddedToCart with productId*/
     public boolean verifyRemoveFromCart(String productId){
         return  listOfProductsInTheCart.stream().anyMatch(
                 element -> !element.getAttribute("id").contains(productId));
